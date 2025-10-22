@@ -3,6 +3,7 @@ package com.smsgateway.app.database
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.ColumnInfo
+import androidx.room.Index
 import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneId
@@ -11,7 +12,14 @@ import java.time.format.DateTimeFormatter
 /**
  * Encja Room reprezentująca wiadomość SMS w bazie danych
  */
-@Entity(tableName = "sms_messages")
+@Entity(
+    tableName = "sms_messages",
+    indices = [
+        Index(value = ["status"]),
+        Index(value = ["scheduled_at"]),
+        Index(value = ["status", "scheduled_at"])
+    ]
+)
 data class SmsMessage(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,

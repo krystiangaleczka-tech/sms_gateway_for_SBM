@@ -106,6 +106,24 @@ interface SmsDao {
     suspend fun updateSmsStatusWithError(id: Long, status: SmsStatus, sentAt: Long, errorMessage: String?): Int
     
     /**
+     * Aktualizuje status z błędem i zwiększa licznik prób w jednej transakcji
+     */
+    @Transaction
+    suspend fun updateSmsStatusWithErrorAndIncrementRetry(id: Long, status: SmsStatus, sentAt: Long, errorMessage: String?) {
+        updateSmsStatusWithError(id, status, sentAt, errorMessage)
+        incrementRetryCount(id)
+    }
+    
+    /**
+     * Przenosi wiadomość do kolejki i aktualizuje czas planowania
+     */
+    @Transaction
+    suspend fun queueSmsMessage(id: Long, scheduledAt: Long) {
+        // Ta metoda będzie rozbudowana w przyszłości
+        updateSmsStatus(id, SmsStatus.QUEUED)
+    }
+    
+    /**
      * Zwiększa licznik prób ponowienia
      */
     @Query("UPDATE sms_messages SET retry_count = retry_count + 1 WHERE id = :id")

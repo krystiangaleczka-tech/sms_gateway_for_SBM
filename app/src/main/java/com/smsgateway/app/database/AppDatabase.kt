@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 @Database(
     entities = [SmsMessage::class],
     version = 1,
-    exportSchema = false
+    exportSchema = true
 )
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
