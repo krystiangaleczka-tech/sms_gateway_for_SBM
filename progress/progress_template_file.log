@@ -1,0 +1,29 @@
+## 📌 **QUICK TEMPLATE:**
+FILE name = [DATE-HOUR:MINUTES]-[FEATURE NAME].log
+✅ [FEATURE NAME] - Short Description
+📅 Data: 2025-10-22 15:30
+🔍 PROBLEM:
+✅ Working item
+❌ Broken item
+🎯 PRZYCZYNA:
+Root cause explanation.
+🛠️ ROZWIĄZANIE:
+1. Component Name
+Plik: path/file.ext (linia ~100)
+text
+// code with ✅ DODAJ TO comments
+Status: ✅ Complete
+✅ Achievement
+🚀 DEPLOYMENT:
+bash
+deployment commands
+✅ WYNIK:
+✅ Result
+✅ Result
+🌐 PRODUKCJA:
+Link: https://app.com
+text
+
+[web:26][web:29][web:32]
+
+---
