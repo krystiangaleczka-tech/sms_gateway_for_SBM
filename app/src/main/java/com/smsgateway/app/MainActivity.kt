@@ -29,13 +29,21 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.smsgateway.app.ui.theme.SMSGatewayTheme
+import com.smsgateway.app.database.AppDatabase
+import com.smsgateway.app.database.SmsRepository
 
 class MainActivity : ComponentActivity() {
     
     private lateinit var ktorServer: KtorServer
+    private lateinit var database: AppDatabase
+    private lateinit var smsRepository: SmsRepository
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        
+        // Inicjalizacja bazy danych Room
+        database = AppDatabase.getDatabase(this)
+        smsRepository = SmsRepository(database.smsDao())
         
         // Uruchom Ktor Server
         ktorServer = KtorServer(this)
@@ -43,7 +51,7 @@ class MainActivity : ComponentActivity() {
         
         setContent {
             SMSGatewayTheme {
-                SMSGatewayApp()
+                SMSGatewayApp(smsRepository = smsRepository)
             }
         }
     }
@@ -55,7 +63,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun SMSGatewayApp() {
+fun SMSGatewayApp(smsRepository: SmsRepository) {
     val navController = rememberNavController()
     var selectedItem by remember { mutableStateOf("dashboard") }
     
@@ -76,13 +84,13 @@ fun SMSGatewayApp() {
             modifier = Modifier.fillMaxSize()
         ) {
             composable("dashboard") {
-                DashboardScreen()
+                DashboardScreen(smsRepository = smsRepository)
             }
             composable("history") {
-                HistoryScreen()
+                HistoryScreen(smsRepository = smsRepository)
             }
             composable("send") {
-                SendSMSScreen()
+                SendSMSScreen(smsRepository = smsRepository)
             }
             composable("settings") {
                 SettingsScreen()
@@ -192,7 +200,7 @@ fun NavItem(
 }
 
 @Composable
-fun DashboardScreen() {
+fun DashboardScreen(smsRepository: SmsRepository) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -609,7 +617,7 @@ fun ActionButton(
 }
 
 @Composable
-fun HistoryScreen() {
+fun HistoryScreen(smsRepository: SmsRepository) {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
@@ -632,7 +640,7 @@ fun HistoryScreen() {
 }
 
 @Composable
-fun SendSMSScreen() {
+fun SendSMSScreen(smsRepository: SmsRepository) {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
