@@ -187,4 +187,70 @@ class SmsRepository(private val smsDao: SmsDao) {
         val thirtyDaysAgo = System.currentTimeMillis() - (30L * 24 * 60 * 60 * 1000)
         return smsDao.cleanupOldMessages(thirtyDaysAgo)
     }
+    
+    /**
+     * Pobiera wiadomość SMS po ID
+     */
+    suspend fun getSmsById(id: Long): SmsMessage? {
+        return smsDao.getSmsById(id)
+    }
+    
+    /**
+     * Pobiera wszystkie wiadomości SMS (synchronicznie)
+     */
+    suspend fun getAllSmsSync(): List<SmsMessage> {
+        return smsDao.getAllSmsSync()
+    }
+    
+    /**
+     * Pobiera wiadomości SMS z paginacją
+     */
+    suspend fun getSmsWithPagination(page: Int, limit: Int, status: String? = null): PaginatedResult<SmsMessage> {
+        val offset = (page - 1) * limit
+        
+        val messages = if (status != null) {
+            smsDao.getSmsWithPaginationAndStatus(status, limit, offset)
+        } else {
+            smsDao.getSmsWithPagination(limit, offset)
+        }
+        
+        val totalCount = if (status != null) {
+            smsDao.getSmsCountByStatusString(status)
+        } else {
+            smsDao.getSmsTotalCount()
+        }
+        
+        val totalPages = (totalCount + limit - 1) / limit // Math.ceil(totalCount / limit)
+        
+        return PaginatedResult(
+            data = messages,
+            total = totalCount,
+            page = page,
+            limit = limit,
+            totalPages = totalPages,
+            hasNextPage = page < totalPages,
+            hasPreviousPage = page > 1
+        )
+    }
 }
+
+/**
+ * Klasa danych dla statystyk statusów
+ */
+data class StatusCount(
+    val status: String,
+    val count: Int
+)
+
+/**
+ * Klasa danych dla wyników paginacji
+ */
+data class PaginatedResult<T>(
+    val data: List<T>,
+    val total: Int,
+    val page: Int,
+    val limit: Int,
+    val totalPages: Int,
+    val hasNextPage: Boolean,
+    val hasPreviousPage: Boolean
+)

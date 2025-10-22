@@ -58,6 +58,30 @@ interface SmsDao {
     suspend fun getAllSmsSync(): List<SmsMessage>
     
     /**
+     * Pobiera wiadomości SMS z paginacją
+     */
+    @Query("SELECT * FROM sms_messages ORDER BY created_at DESC LIMIT :limit OFFSET :offset")
+    suspend fun getSmsWithPagination(limit: Int, offset: Int): List<SmsMessage>
+    
+    /**
+     * Pobiera wiadomości SMS z paginacją i filtrowaniem po statusie
+     */
+    @Query("SELECT * FROM sms_messages WHERE status = :status ORDER BY created_at DESC LIMIT :limit OFFSET :offset")
+    suspend fun getSmsWithPaginationAndStatus(status: String, limit: Int, offset: Int): List<SmsMessage>
+    
+    /**
+     * Pobiera całkowitą liczbę wiadomości
+     */
+    @Query("SELECT COUNT(*) FROM sms_messages")
+    suspend fun getSmsTotalCount(): Int
+    
+    /**
+     * Pobiera liczbę wiadomości według statusu
+     */
+    @Query("SELECT COUNT(*) FROM sms_messages WHERE status = :status")
+    suspend fun getSmsCountByStatusString(status: String): Int
+    
+    /**
      * Pobiera wiadomości SMS z określonym statusem
      */
     @Query("SELECT * FROM sms_messages WHERE status = :status ORDER BY created_at DESC")
@@ -158,11 +182,3 @@ interface SmsDao {
     @Query("DELETE FROM sms_messages WHERE created_at < :timestamp AND status IN ('SENT', 'CANCELLED')")
     suspend fun cleanupOldMessages(timestamp: Long): Int
 }
-
-/**
- * Klasa danych dla statystyk statusów
- */
-data class StatusCount(
-    val status: String,
-    val count: Int
-)

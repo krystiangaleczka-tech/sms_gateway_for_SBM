@@ -46,7 +46,7 @@ class MainActivity : ComponentActivity() {
         smsRepository = SmsRepository(database.smsDao())
         
         // Uruchom Ktor Server
-        ktorServer = KtorServer(this)
+        ktorServer = KtorServer(this, smsRepository)
         ktorServer.start()
         
         setContent {

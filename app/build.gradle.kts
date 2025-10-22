@@ -57,6 +57,19 @@ android {
     }
 }
 
+// Rozwiązanie konfliktów zależności Guava
+configurations.all {
+    resolutionStrategy {
+        force("com.google.guava:guava:32.1.1-jre")
+        // Wyklucz konfliktujący moduł listenablefuture
+        eachDependency {
+            if (requested.group == "com.google.guava" && requested.name == "listenablefuture") {
+                useTarget("com.google.guava:guava:32.1.1-jre")
+            }
+        }
+    }
+}
+
 dependencies {
     // Android Core
     implementation("androidx.core:core-ktx:1.12.0")
@@ -82,6 +95,18 @@ dependencies {
     implementation("io.ktor:ktor-server-netty:2.3.12")
     implementation("io.ktor:ktor-server-content-negotiation:2.3.12")
     implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.12")
+    
+    // Ktor Plugins
+    implementation("io.ktor:ktor-server-auth:2.3.12")
+    implementation("io.ktor:ktor-server-auth-jwt:2.3.12")
+    implementation("io.ktor:ktor-server-status-pages:2.3.12")
+    implementation("io.ktor:ktor-server-request-validation:2.3.12")
+    implementation("io.ktor:ktor-server-call-logging:2.3.12")
+    implementation("io.ktor:ktor-server-cors:2.3.12")
+    implementation("io.ktor:ktor-server-compression:2.3.12")
+    
+    // JWT
+    implementation("com.auth0:java-jwt:4.4.0")
     
     // Room Database
     implementation("androidx.room:room-runtime:2.6.1")

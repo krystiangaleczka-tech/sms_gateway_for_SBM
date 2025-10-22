@@ -4,6 +4,8 @@ SMS Gateway is an Android-based application that enables scheduled SMS messaging
 ​
 Business Objectives
 The product aims to provide a reliable, self-hosted SMS gateway solution that allows external systems to schedule SMS messages with precise timing. The system is optimized for appointment reminder use cases where messages need to be sent 24 hours before scheduled appointments.​
+!Najpierw doprowadź do działającego builda, potem dodawaj dodatkowe featury!
+
 Target Users
 External systems and applications that require SMS notification capabilities, particularly those managing appointment scheduling and requiring automated reminder functionality.​
 Product Scope
