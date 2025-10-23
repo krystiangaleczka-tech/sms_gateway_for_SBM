@@ -3,6 +3,7 @@ package com.smsgateway.app
 import android.content.Context
 import com.smsgateway.app.database.SmsRepository
 import com.smsgateway.app.routes.smsRoutes
+import com.smsgateway.app.workers.WorkManagerService
 import com.smsgateway.app.plugins.*
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
@@ -24,9 +25,14 @@ import org.slf4j.LoggerFactory
 
 class KtorServer(private val context: Context, private val smsRepository: SmsRepository) {
     
+    private val workManagerService = WorkManagerService(context)
+    
     private var server: NettyApplicationEngine? = null
     
     fun start() {
+        // Uruchomienie okresowego schedulera SMS
+        workManagerService.startPeriodicScheduler()
+        
         CoroutineScope(Dispatchers.IO).launch {
             server = embeddedServer(Netty, port = 8080, host = "0.0.0.0") {
                 // Pluginy Ktor
@@ -96,7 +102,7 @@ class KtorServer(private val context: Context, private val smsRepository: SmsRep
                     }
                     
                     // SMS routes
-                    smsRoutes(smsRepository)
+                    smsRoutes(smsRepository, workManagerService)
                 }
             }.start(wait = false)
         }

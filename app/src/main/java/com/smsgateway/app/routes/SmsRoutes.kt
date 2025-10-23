@@ -5,6 +5,7 @@ import com.smsgateway.app.database.SmsRepository
 import com.smsgateway.app.database.SmsStatus
 import com.smsgateway.app.models.dto.SmsRequest
 import com.smsgateway.app.models.dto.SmsResponse
+import com.smsgateway.app.workers.WorkManagerService
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.auth.*
@@ -18,7 +19,7 @@ import java.time.format.DateTimeFormatter
 /**
  * Konfiguruje routingi dla endpointów SMS
  */
-fun Route.smsRoutes(smsRepository: SmsRepository) {
+fun Route.smsRoutes(smsRepository: SmsRepository, workManagerService: WorkManagerService) {
     
     /**
      * POST /api/v1/sms/queue
@@ -55,15 +56,32 @@ fun Route.smsRoutes(smsRepository: SmsRepository) {
             // Zapis do bazy danych
             val messageId = smsRepository.insertSms(smsMessage)
             
-            call.respond(
-                HttpStatusCode.Created,
-                mapOf(
-                    "id" to messageId,
-                    "status" to smsMessage.status.name,
-                    "message" to "SMS queued successfully",
-                    "parts" to partsCount
+            // Pobranie zapisanej wiadomości z ID
+            val savedMessage = smsRepository.getSmsById(messageId)
+            
+            if (savedMessage != null) {
+                // Zaplanowanie wysyłki SMS przez WorkManager
+                workManagerService.scheduleSmsSending(savedMessage)
+                
+                call.respond(
+                    HttpStatusCode.Created,
+                    mapOf(
+                        "id" to messageId,
+                        "status" to savedMessage.status.name,
+                        "message" to "SMS queued successfully",
+                        "parts" to partsCount,
+                        "scheduledAt" to savedMessage.scheduledAt
+                    )
                 )
-            )
+            } else {
+                call.respond(
+                    HttpStatusCode.InternalServerError,
+                    mapOf(
+                        "error" to "Failed to save SMS message",
+                        "message" to "SMS was not saved to database"
+                    )
+                )
+            }
         }
     }
     
@@ -166,6 +184,9 @@ fun Route.smsRoutes(smsRepository: SmsRepository) {
             val updatedRows = smsRepository.updateSmsStatus(id, SmsStatus.CANCELLED)
             
             if (updatedRows > 0) {
+                // Anulowanie zaplanowanego zadania WorkManager
+                workManagerService.cancelSmsSending(id)
+                
                 call.respond(
                     HttpStatusCode.OK,
                     mapOf(
