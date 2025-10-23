@@ -1,114 +1,113 @@
 package com.smsgateway.app
 
-import android.content.Context
-import com.smsgateway.app.database.SmsRepository
-import com.smsgateway.app.routes.smsRoutes
-import com.smsgateway.app.workers.WorkManagerService
 import com.smsgateway.app.plugins.*
-import io.ktor.serialization.kotlinx.json.*
+import com.smsgateway.app.routes.queueRoutes
+import com.smsgateway.app.routes.smsRoutes
+import com.smsgateway.app.routes.loggingRoutes
+import com.smsgateway.app.queue.SmsQueueService
+import com.smsgateway.app.health.HealthChecker
+import com.smsgateway.app.events.MetricsCollector
+import com.smsgateway.app.retry.RetryService
+import com.smsgateway.app.database.SmsRepository
+import com.smsgateway.app.database.AppDatabase
+import com.smsgateway.app.logging.Logger
+import com.smsgateway.app.logging.LogManager
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
-import io.ktor.server.plugins.contentnegotiation.*
-import io.ktor.server.plugins.cors.routing.*
-import io.ktor.server.plugins.statuspages.*
-import io.ktor.server.plugins.requestvalidation.*
-import io.ktor.server.request.*
-import io.ktor.server.response.*
-import io.ktor.server.routing.*
-import io.ktor.http.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import org.slf4j.event.Level
-import org.slf4j.LoggerFactory
 
-class KtorServer(private val context: Context, private val smsRepository: SmsRepository) {
+fun main() {
+    embeddedServer(Netty, port = 8080, host = "0.0.0.0", module = Application::module)
+        .start(wait = true)
+}
+
+fun Application.module() {
+    // Inicjalizacja systemu logowania
+    initializeLogging()
     
-    private val workManagerService = WorkManagerService(context)
+    // Inicjalizacja bazy danych
+    val database = AppDatabase.getDatabase(this)
+    val smsRepository = SmsRepository(database.smsDao())
     
-    private var server: NettyApplicationEngine? = null
+    // Inicjalizacja komponentów systemu kolejkowania
+    val healthChecker = HealthChecker(this)
+    val metricsCollector = MetricsCollector()
+    val retryService = RetryService()
+    val smsQueueService = SmsQueueService(smsRepository, retryService, metricsCollector, healthChecker)
     
-    fun start() {
-        // Uruchomienie okresowego schedulera SMS
-        workManagerService.startPeriodicScheduler()
-        
-        CoroutineScope(Dispatchers.IO).launch {
-            server = embeddedServer(Netty, port = 8080, host = "0.0.0.0") {
-                // Pluginy Ktor
-                install(ContentNegotiation) {
-                    json()
-                }
-                
-                // Konfiguracja pluginów
-                configureStatusPages()
-                configureRequestValidation()
-                configureAuthentication()
-                configureCORS()
-                
-                routing {
-                    // Root endpoint
-                    get("/") {
-                        call.respondText(
-                            """
-                            <!DOCTYPE html>
-                            <html>
-                            <head>
-                                <title>SMS Gateway</title>
-                                <meta charset="UTF-8">
-                            </head>
-                            <body>
-                                <h1>🚀 SMS Gateway działa!</h1>
-                                <p>Serwer Ktor uruchomiony poprawnie</p>
-                                <p>Status: <strong style="color: green;">ONLINE</strong></p>
-                                <p>API Endpoints:</p>
-                                <ul>
-                                    <li>POST /api/v1/sms/queue - Kolejkowanie SMS (wymaga autentykacji)</li>
-                                    <li>GET /api/v1/sms/status/{id} - Status SMS (wymaga autentykacji)</li>
-                                    <li>GET /api/v1/sms/history - Historia SMS (wymaga autentykacji)</li>
-                                    <li>DELETE /api/v1/sms/cancel/{id} - Anulowanie SMS (wymaga autentykacji)</li>
-                                </ul>
-                                <p>Autentykacja: Bearer Token</p>
-                                <p>Przykład: Authorization: Bearer smsgateway-api-token-2024-secure</p>
-                            </body>
-                            </html>
-                            """.trimIndent(),
-                            ContentType.Text.Html
-                        )
-                    }
-                    
-                    // Status endpoint (publiczny, bez autentykacji)
-                    get("/api/v1/status") {
-                        call.respond(
-                            mapOf(
-                                "status" to "OK",
-                                "message" to "Server running",
-                                "version" to "2.1.0",
-                                "features" to mapOf(
-                                    "authentication" to "Bearer Token",
-                                    "pagination" to "Supported",
-                                    "validation" to "Automatic",
-                                    "compression" to "gzip/deflate",
-                                    "cors" to "Enabled"
-                                ),
-                                "endpoints" to mapOf(
-                                    "queue" to "POST /api/v1/sms/queue",
-                                    "status" to "GET /api/v1/sms/status/{id}",
-                                    "history" to "GET /api/v1/sms/history?page=1&limit=50",
-                                    "cancel" to "DELETE /api/v1/sms/cancel/{id}"
-                                )
-                            )
-                        )
-                    }
-                    
-                    // SMS routes
-                    smsRoutes(smsRepository, workManagerService)
-                }
-            }.start(wait = false)
-        }
+    // Konfiguracja wtyczek
+    configureCORS()
+    configureAuthentication()
+    configureRequestValidation()
+    configureStatusPages()
+    configureSerialization()
+    configureMonitoring()
+    
+    // Konfiguracja routingów
+    routing {
+        smsRoutes(smsRepository, smsQueueService)
+        queueRoutes(smsQueueService, healthChecker, metricsCollector, retryService)
+        loggingRoutes()
     }
     
-    fun stop() {
-        server?.stop(1000, 2000)
+    // Logowanie startu serwera
+    Logger.system(Logger.LogLevel.INFO, "SMSGateway server started successfully", mapOf(
+        "port" to 8080,
+        "host" to "0.0.0.0",
+        "version" to "1.0.0"
+    ))
+}
+
+/**
+ * Inicjalizuje system logowania z odpowiednią konfiguracją
+ */
+fun Application.initializeLogging() {
+    try {
+        // Konfiguracja Logger
+        val loggerConfig = Logger.LoggingConfig(
+            minLevel = Logger.LogLevel.DEBUG,
+            enableConsole = true,
+            enableFile = true,
+            enableEvents = true,
+            maxLogEntries = 10000,
+            enableMetrics = true,
+            categories = Logger.Category.values().toSet(),
+            componentFilters = emptySet(),
+            enableStructuredLogging = true
+        )
+        Logger.configure(loggerConfig)
+        
+        // Konfiguracja LogManager
+        val logManagerConfig = LogManager.LogManagerConfig(
+            enableFileLogging = true,
+            logDirectory = "logs",
+            maxFileSizeBytes = 10 * 1024 * 1024, // 10MB
+            maxFiles = 5,
+            retentionDays = 30,
+            enableAutoCleanup = true,
+            enableCompression = true,
+            enableLogAnalysis = true,
+            exportFormats = setOf(
+                LogManager.ExportFormat.JSON,
+                LogManager.ExportFormat.CSV,
+                LogManager.ExportFormat.TXT
+            )
+        )
+        
+        // Inicjalizacja LogManager
+        LogManager.initialize(logManagerConfig)
+        
+        Logger.system(Logger.LogLevel.INFO, "Logging system initialized successfully", mapOf(
+            "loggerMinLevel" to loggerConfig.minLevel.displayName,
+            "enableFileLogging" to logManagerConfig.enableFileLogging,
+            "logDirectory" to logManagerConfig.logDirectory
+        ))
+    } catch (e: Exception) {
+        // Fallback do podstawowego logowania jeśli inicjalizacja się nie powiedzie
+        println("Failed to initialize logging system: ${e.message}")
+        e.printStackTrace()
     }
 }

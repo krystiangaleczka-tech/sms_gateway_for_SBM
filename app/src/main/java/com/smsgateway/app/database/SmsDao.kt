@@ -181,4 +181,188 @@ interface SmsDao {
      */
     @Query("DELETE FROM sms_messages WHERE created_at < :timestamp AND status IN ('SENT', 'CANCELLED')")
     suspend fun cleanupOldMessages(timestamp: Long): Int
+    
+    // === METODY DLA KOLEJKI PRIORYTETOWEJ ===
+    
+    /**
+     * Pobiera maksymalną pozycję w kolejce dla danego priorytetu
+     */
+    @Query("SELECT MAX(queue_position) FROM sms_messages WHERE priority = :priority AND status = 'QUEUED'")
+    suspend fun getMaxQueuePosition(priority: Int): Int?
+    
+    /**
+     * Aktualizuje pozycję w kolejce
+     */
+    @Query("UPDATE sms_messages SET queue_position = :position WHERE id = :id")
+    suspend fun updateQueuePosition(id: Long, position: Int?): Int
+    
+    /**
+     * Pobiera następną wiadomość z kolejki (o najwyższym priorytecie)
+     */
+    @Query("""
+        SELECT * FROM sms_messages
+        WHERE status = 'QUEUED'
+        ORDER BY priority DESC, queue_position ASC, created_at ASC
+        LIMIT 1
+    """)
+    suspend fun getNextQueuedMessage(): SmsMessage?
+    
+    /**
+     * Pobiera wiadomości w kolejce dla danego priorytetu
+     */
+    @Query("""
+        SELECT * FROM sms_messages
+        WHERE status = 'QUEUED' AND priority = :priority
+        ORDER BY queue_position ASC, created_at ASC
+    """)
+    suspend fun getQueuedMessagesByPriority(priority: Int): List<SmsMessage>
+    
+    /**
+     * Pobiera liczbę wiadomości w kolejce
+     */
+    @Query("SELECT COUNT(*) FROM sms_messages WHERE status = 'QUEUED'")
+    suspend fun getQueuedMessagesCount(): Int
+    
+    /**
+     * Pobiera liczbę wiadomości w kolejce dla danego priorytetu
+     */
+    @Query("SELECT COUNT(*) FROM sms_messages WHERE status = 'QUEUED' AND priority = :priority")
+    suspend fun getQueuedMessagesCountByPriority(priority: Int): Int
+    
+    /**
+     * Aktualizuje priorytet i pozycję wiadomości
+     */
+    @Query("UPDATE sms_messages SET priority = :priority, queue_position = :position WHERE id = :id")
+    suspend fun updatePriorityAndPosition(id: Long, priority: SmsPriority, position: Int): Int
+    
+    /**
+     * Czyści kolejkę dla danego priorytetu
+     */
+    @Query("UPDATE sms_messages SET status = 'CANCELLED', queue_position = NULL WHERE status = 'QUEUED' AND priority = :priority")
+    suspend fun clearQueueByPriority(priority: Int): Int
+    
+    /**
+     * Czyści całą kolejkę
+     */
+    @Query("UPDATE sms_messages SET status = 'CANCELLED', queue_position = NULL WHERE status = 'QUEUED'")
+    suspend fun clearEntireQueue(): Int
+    
+    /**
+     * Reorganizuje pozycje w kolejce - naprawia luki po usunięciach
+     */
+    @Transaction
+    suspend fun reorganizeQueuePositions(): Int {
+        val allQueuedMessages = getAllQueuedMessagesForReorganization()
+        var updatedCount = 0
+        
+        // Grupuj po priorytecie i przypisz nowe pozycje
+        val groupedByPriority = allQueuedMessages.groupBy { it.priority }
+        
+        for ((priority, messages) in groupedByPriority) {
+            val priorityOffset = (5 - priority.value) * 10000
+            messages.sortedBy { it.createdAt }.forEachIndexed { index, message ->
+                val newPosition = priorityOffset + index + 1
+                if (message.queuePosition != newPosition) {
+                    updateQueuePosition(message.id, newPosition)
+                    updatedCount++
+                }
+            }
+        }
+        
+        return updatedCount
+    }
+    
+    /**
+     * Pobiera wszystkie wiadomości w kolejce do reorganizacji
+     */
+    @Query("SELECT * FROM sms_messages WHERE status = 'QUEUED' ORDER BY priority DESC, created_at ASC")
+    suspend fun getAllQueuedMessagesForReorganization(): List<SmsMessage>
+    
+    /**
+     * Pobiera czas najstarszej wiadomości w kolejce
+     */
+    @Query("SELECT MIN(created_at) FROM sms_messages WHERE status = 'QUEUED'")
+    suspend fun getOldestQueuedMessageTime(): Long?
+    
+    /**
+     * Pobiera czas najnowszej wiadomości w kolejce
+     */
+    @Query("SELECT MAX(created_at) FROM sms_messages WHERE status = 'QUEUED'")
+    suspend fun getNewestQueuedMessageTime(): Long?
+    
+    /**
+     * Pobiera metryki kolejki dla monitoringu
+     */
+    @Query("""
+        SELECT
+            priority,
+            COUNT(*) as count,
+            MIN(created_at) as oldest_time,
+            MAX(created_at) as newest_time
+        FROM sms_messages
+        WHERE status = 'QUEUED'
+        GROUP BY priority
+        ORDER BY priority DESC
+    """)
+    suspend fun getQueueMetrics(): List<QueueMetrics>
+    
+    // === DODATKOWE METODY DLA SMS QUEUE SERVICE ===
+    
+    /**
+     * Pobiera zaplanowane wiadomości przed określonym czasem
+     */
+    @Query("SELECT * FROM sms_messages WHERE status = 'SCHEDULED' AND scheduled_at <= :timestamp ORDER BY priority DESC, created_at ASC")
+    suspend fun getScheduledMessagesBefore(timestamp: Long): List<SmsMessage>
+    
+    /**
+     * Pobiera wiadomości według statusu i zakresu czasowego
+     */
+    @Query("SELECT * FROM sms_messages WHERE status = :status AND created_at BETWEEN :startTime AND :endTime ORDER BY created_at DESC")
+    suspend fun getMessagesByStatusAndTimeRange(status: SmsStatus, startTime: Long, endTime: Long): List<SmsMessage>
+    
+    /**
+     * Usuwa wiadomości według statusu
+     */
+    @Query("DELETE FROM sms_messages WHERE status = :status")
+    suspend fun deleteByStatus(status: SmsStatus): Int
+    
+    /**
+     * Pobiera całkowitą liczbę wiadomości
+     */
+    @Query("SELECT COUNT(*) FROM sms_messages")
+    suspend fun getMessageCount(): Int
+    
+    /**
+     * Pobiera wiadomości według statusu
+     */
+    @Query("SELECT * FROM sms_messages WHERE status = :status ORDER BY created_at DESC")
+    suspend fun getMessagesByStatus(status: SmsStatus): List<SmsMessage>
+    
+    /**
+     * Pobiera pojedynczą wiadomość po ID
+     */
+    @Query("SELECT * FROM sms_messages WHERE id = :id")
+    suspend fun getMessageById(id: Long): SmsMessage?
+    
+    /**
+     * Wstawia nową wiadomość i zwraca ID
+     */
+    @Insert
+    suspend fun insert(smsMessage: SmsMessage): Long
+    
+    /**
+     * Aktualizuje status wiadomości SMS (alias dla updateSmsStatus)
+     */
+    @Query("UPDATE sms_messages SET status = :status WHERE id = :id")
+    suspend fun updateStatus(id: Long, status: SmsStatus): Int
 }
+
+/**
+ * Klasa danych dla metryk kolejki
+ */
+data class QueueMetrics(
+    val priority: Int,
+    val count: Int,
+    val oldestTime: Long?,
+    val newestTime: Long?
+)

@@ -17,7 +17,10 @@ import java.time.format.DateTimeFormatter
     indices = [
         Index(value = ["status"]),
         Index(value = ["scheduled_at"]),
-        Index(value = ["status", "scheduled_at"])
+        Index(value = ["status", "scheduled_at"]),
+        Index(value = ["priority", "status"]),
+        Index(value = ["created_at"]),
+        Index(value = ["queue_position"])
     ]
 )
 data class SmsMessage(
@@ -32,6 +35,9 @@ data class SmsMessage(
     
     @ColumnInfo(name = "status")
     val status: SmsStatus,
+    
+    @ColumnInfo(name = "priority")
+    val priority: SmsPriority = SmsPriority.NORMAL,
     
     @ColumnInfo(name = "created_at")
     val createdAt: Long,
@@ -49,7 +55,16 @@ data class SmsMessage(
     val retryCount: Int = 0,
     
     @ColumnInfo(name = "max_retries")
-    val maxRetries: Int = 3
+    val maxRetries: Int = 3,
+    
+    @ColumnInfo(name = "retry_strategy")
+    val retryStrategy: RetryStrategy = RetryStrategy.EXPONENTIAL_BACKOFF,
+    
+    @ColumnInfo(name = "queue_position")
+    val queuePosition: Int? = null,
+    
+    @ColumnInfo(name = "metadata")
+    val metadata: String? = null // JSON string dla dodatkowych metadanych
 )
 
 /**
@@ -62,6 +77,32 @@ enum class SmsStatus {
     SENT,          // Wysłana pomyślnie
     FAILED,        // Błąd wysyłki
     CANCELLED      // Anulowana
+}
+
+/**
+ * Enum definiujący priorytety wiadomości SMS
+ */
+enum class SmsPriority(val value: Int) {
+    LOW(1),
+    NORMAL(2),
+    HIGH(3),
+    URGENT(4);
+    
+    companion object {
+        fun fromValue(value: Int): SmsPriority {
+            return values().find { it.value == value } ?: NORMAL
+        }
+    }
+}
+
+/**
+ * Enum definiujący strategie ponawiania wysyłki
+ */
+enum class RetryStrategy {
+    EXPONENTIAL_BACKOFF,    // Eksponencjalny backoff
+    LINEAR_BACKOFF,         // Liniowy backoff
+    FIXED_DELAY,            // Stałe opóźnienie
+    CUSTOM                  // Niestandardowa strategia
 }
 
 /**

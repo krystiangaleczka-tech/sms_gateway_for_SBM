@@ -60,7 +60,7 @@ Appointment time (ISO 8601 timestamp)
 ​
 FR-2: Timing Control
 The system must implement two-stage timing:
-Queue time: 18 hours before appointment
+Queue time: 28 hours before appointment
 Send time: 24 hours before appointment
 WorkManager scheduling at queue time
 Actual SMS transmission at send time
