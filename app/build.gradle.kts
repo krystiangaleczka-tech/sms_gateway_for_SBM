@@ -130,6 +130,10 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
     implementation("io.ktor:ktor-client-serialization:2.3.12")
     
+    // Error Reporting (optional - Firebase Crashlytics)
+    // implementation("com.google.firebase:firebase-crashlytics-ktx:18.3.7")
+    // implementation("com.google.firebase:firebase-analytics-ktx:21.2.0")
+    
     // Testing
     testImplementation("junit:junit:4.13.2")
     testImplementation("androidx.room:room-testing:2.6.1")

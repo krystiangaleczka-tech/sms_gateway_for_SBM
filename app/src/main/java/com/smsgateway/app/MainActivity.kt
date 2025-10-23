@@ -31,12 +31,19 @@ import androidx.navigation.compose.rememberNavController
 import com.smsgateway.app.ui.theme.SMSGatewayTheme
 import com.smsgateway.app.database.AppDatabase
 import com.smsgateway.app.database.SmsRepository
+import com.smsgateway.app.monitoring.ErrorHandler
+import com.smsgateway.app.monitoring.repositories.ErrorRepository
+import com.smsgateway.app.monitoring.repositories.MetricsRepository
+import com.smsgateway.app.ui.screens.ErrorScreen
 
 class MainActivity : ComponentActivity() {
     
     private lateinit var ktorServer: KtorServer
     private lateinit var database: AppDatabase
     private lateinit var smsRepository: SmsRepository
+    private lateinit var errorHandler: ErrorHandler
+    private lateinit var errorRepository: ErrorRepository
+    private lateinit var metricsRepository: MetricsRepository
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,13 +52,22 @@ class MainActivity : ComponentActivity() {
         database = AppDatabase.getDatabase(this)
         smsRepository = SmsRepository(database.smsDao())
         
+        // Inicjalizacja systemu monitoringu i obsługi błędów
+        errorRepository = ErrorRepository(this)
+        metricsRepository = MetricsRepository(this)
+        errorHandler = ErrorHandler.getInstance(this, errorRepository)
+        
         // Uruchom Ktor Server
         ktorServer = KtorServer(this, smsRepository)
         ktorServer.start()
         
         setContent {
             SMSGatewayTheme {
-                SMSGatewayApp(smsRepository = smsRepository)
+                SMSGatewayApp(
+                    smsRepository = smsRepository,
+                    errorHandler = errorHandler,
+                    errorRepository = errorRepository
+                )
             }
         }
     }
@@ -63,7 +79,11 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun SMSGatewayApp(smsRepository: SmsRepository) {
+fun SMSGatewayApp(
+    smsRepository: SmsRepository,
+    errorHandler: ErrorHandler,
+    errorRepository: ErrorRepository
+) {
     val navController = rememberNavController()
     var selectedItem by remember { mutableStateOf("dashboard") }
     
@@ -91,6 +111,9 @@ fun SMSGatewayApp(smsRepository: SmsRepository) {
             }
             composable("send") {
                 SendSMSScreen(smsRepository = smsRepository)
+            }
+            composable("errors") {
+                ErrorScreen()
             }
             composable("settings") {
                 SettingsScreen()
@@ -156,6 +179,12 @@ fun Sidebar(selectedItem: String, onItemSelected: (String) -> Unit) {
                 label = "Wyślij SMS",
                 isSelected = selectedItem == "send",
                 onClick = { onItemSelected("send") }
+            )
+            NavItem(
+                icon = Icons.Default.BugReport,
+                label = "Błędy",
+                isSelected = selectedItem == "errors",
+                onClick = { onItemSelected("errors") }
             )
             NavItem(
                 icon = Icons.Default.Settings,

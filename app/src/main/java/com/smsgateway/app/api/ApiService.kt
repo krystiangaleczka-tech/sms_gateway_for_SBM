@@ -1,6 +1,9 @@
 package com.smsgateway.app.api
 
+import com.smsgateway.app.monitoring.models.*
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -88,6 +91,48 @@ class ApiService private constructor() {
             
             val response = client.newCall(request).execute()
             handleResponse(response)
+    
+    /**
+     * Raportowanie błędu do backendu
+     */
+    suspend fun reportError(error: AppError): Response {
+        return post("/errors/report", error)
+    }
+    
+    /**
+     * Pobieranie listy błędów z backendu
+     */
+    suspend fun getErrors(limit: Int = 50): Response {
+        return get("/errors?limit=$limit")
+    }
+    
+    /**
+     * Pobieranie szczegółów błędu z backendu
+     */
+    suspend fun getError(errorId: String): Response {
+        return get("/errors/$errorId")
+    }
+    
+    /**
+     * Pobieranie metryk systemu z backendu
+     */
+    suspend fun getSystemMetrics(): Response {
+        return get("/monitoring/metrics")
+    }
+    
+    /**
+     * Pobieranie statusu systemu z backendu
+     */
+    suspend fun getSystemHealth(): Response {
+        return get("/monitoring/health")
+    }
+    
+    /**
+     * Pobieranie alertów systemu z backendu
+     */
+    suspend fun getSystemAlerts(limit: Int = 20): Response {
+        return get("/monitoring/alerts?limit=$limit")
+    }
         } catch (e: IOException) {
             throw ApiException("Network error: ${e.message}", e)
         }

@@ -4,6 +4,7 @@ import com.smsgateway.app.plugins.*
 import com.smsgateway.app.routes.queueRoutes
 import com.smsgateway.app.routes.smsRoutes
 import com.smsgateway.app.routes.loggingRoutes
+import com.smsgateway.app.routes.errorRoutes
 import com.smsgateway.app.queue.SmsQueueService
 import com.smsgateway.app.health.HealthChecker
 import com.smsgateway.app.events.MetricsCollector
@@ -51,6 +52,7 @@ fun Application.module() {
         smsRoutes(smsRepository, smsQueueService)
         queueRoutes(smsQueueService, healthChecker, metricsCollector, retryService)
         loggingRoutes()
+        errorRoutes()
     }
     
     // Logowanie startu serwera
