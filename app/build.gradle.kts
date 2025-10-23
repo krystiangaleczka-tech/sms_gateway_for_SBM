@@ -107,6 +107,16 @@ dependencies {
     implementation("io.ktor:ktor-server-compression:2.3.12")
     
     // JWT
+    // Security
+    implementation("at.favre.lib:bcrypt:0.10.2")
+    implementation("org.bouncycastle:bcprov-jdk15on:1.70")
+    
+    // Rate Limiting
+    implementation("io.github.oshai:kotlin-logging-jvm:5.1.0")
+    implementation("com.github.ben-manes.caffeine:caffeine:3.1.8")
+    
+    // Testing
+    testImplementation("io.mockk:mockk:1.13.8")
     implementation("com.auth0:java-jwt:4.4.0")
     
     // Room Database

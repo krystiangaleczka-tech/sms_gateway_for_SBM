@@ -5,6 +5,7 @@ import com.smsgateway.app.routes.queueRoutes
 import com.smsgateway.app.routes.smsRoutes
 import com.smsgateway.app.routes.loggingRoutes
 import com.smsgateway.app.routes.errorRoutes
+import com.smsgateway.app.routes.security.SecurityRoutes
 import com.smsgateway.app.queue.SmsQueueService
 import com.smsgateway.app.health.HealthChecker
 import com.smsgateway.app.events.MetricsCollector
@@ -13,6 +14,9 @@ import com.smsgateway.app.database.SmsRepository
 import com.smsgateway.app.database.AppDatabase
 import com.smsgateway.app.logging.Logger
 import com.smsgateway.app.logging.LogManager
+import com.smsgateway.app.repositories.*
+import com.smsgateway.app.services.security.*
+import com.smsgateway.app.api.security.*
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
@@ -33,11 +37,39 @@ fun Application.module() {
     val database = AppDatabase.getDatabase(this)
     val smsRepository = SmsRepository(database.smsDao())
     
+    // Inicjalizacja repozytoriów bezpieczeństwa
+    val securityEventRepository = SecurityEventRepositoryImpl(database.securityEventDao())
+    val apiTokenRepository = ApiTokenRepositoryImpl(database.apiTokenDao())
+    val rateLimitRepository = RateLimitRepositoryImpl(database.rateLimitDao())
+    val tunnelConfigRepository = TunnelConfigRepositoryImpl(database.tunnelConfigDao())
+    
+    // Inicjalizacja usług bezpieczeństwa
+    val tokenManagerService = TokenManagerService(apiTokenRepository)
+    val rateLimitService = RateLimitService(rateLimitRepository)
+    val tunnelService = CloudflareTunnelService(tunnelConfigRepository, securityEventRepository)
+    val securityAuditService = SecurityAuditService(securityEventRepository)
+    
+    // Inicjalizacja kontrolerów bezpieczeństwa
+    val tokenController = TokenController(tokenManagerService, securityAuditService)
+    val tunnelController = TunnelController(tunnelService, securityAuditService)
+    val securityController = SecurityController(securityAuditService)
+    
     // Inicjalizacja komponentów systemu kolejkowania
     val healthChecker = HealthChecker(this)
     val metricsCollector = MetricsCollector()
     val retryService = RetryService()
     val smsQueueService = SmsQueueService(smsRepository, retryService, metricsCollector, healthChecker)
+    
+    // Inicjalizacja routing bezpieczeństwa
+    val securityRoutes = SecurityRoutes(
+        tokenController,
+        tunnelController,
+        securityController,
+        tokenManagerService,
+        tunnelService,
+        securityAuditService,
+        rateLimitService
+    )
     
     // Konfiguracja wtyczek
     configureCORS()
@@ -54,6 +86,9 @@ fun Application.module() {
         loggingRoutes()
         errorRoutes()
     }
+    
+    // Konfiguracja routing bezpieczeństwa
+    securityRoutes.configure(this)
     
     // Logowanie startu serwera
     Logger.system(Logger.LogLevel.INFO, "SMSGateway server started successfully", mapOf(
