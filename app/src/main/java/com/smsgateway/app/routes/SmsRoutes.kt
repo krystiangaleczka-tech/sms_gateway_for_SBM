@@ -129,7 +129,8 @@ fun Route.smsRoutes(smsRepository: SmsRepository, workManagerService: WorkManage
             if (page < 1) throw IllegalArgumentException("Page must be >= 1")
             if (limit < 1 || limit > 100) throw IllegalArgumentException("Limit must be between 1 and 100")
             
-            val paginatedResult = smsRepository.getSmsWithPagination(page, limit, status)
+            val offset = (page - 1) * limit
+            val paginatedResult = smsRepository.getSmsWithPagination(limit, offset, status)
             
             val response: List<Map<String, Any?>> = paginatedResult.data.map { sms ->
                 mapOf<String, Any?>(

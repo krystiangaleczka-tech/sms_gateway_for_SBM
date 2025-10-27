@@ -6,3 +6,9 @@
 [debug] [2025-10-22T14:58:14.699Z] > authorizing via signed-in user (salonbeautymario@gmail.com)
 [debug] [2025-10-23T10:42:10.760Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
 [debug] [2025-10-23T10:42:10.762Z] > authorizing via signed-in user (salonbeautymario@gmail.com)
+[debug] [2025-10-24T17:51:09.005Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-10-24T17:51:09.016Z] > authorizing via signed-in user (salonbeautymario@gmail.com)
+[debug] [2025-10-27T07:31:38.180Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-10-27T07:31:38.184Z] > authorizing via signed-in user (salonbeautymario@gmail.com)
+[debug] [2025-10-27T07:31:55.523Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-10-27T07:31:55.531Z] > authorizing via signed-in user (salonbeautymario@gmail.com)

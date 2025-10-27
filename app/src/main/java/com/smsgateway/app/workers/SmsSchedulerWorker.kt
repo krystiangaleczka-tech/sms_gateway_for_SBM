@@ -12,6 +12,7 @@ import dagger.assisted.AssistedInject
 import kotlinx.coroutines.flow.first
 import org.slf4j.LoggerFactory
 import java.util.concurrent.TimeUnit
+import kotlin.math.pow
 
 /**
  * Worker okresowy sprawdzający wiadomości SMS w kolejce
@@ -122,8 +123,7 @@ class SmsSchedulerWorker @AssistedInject constructor(
                     smsRepository.updateSmsStatusWithSentTime(
                         message.id,
                         SmsStatus.SCHEDULED,
-                        newScheduledTime,
-                        message.errorMessage
+                        newScheduledTime
                     )
                     
                     // Pobierz zaktualizowaną wiadomość
@@ -167,7 +167,7 @@ class SmsSchedulerWorker @AssistedInject constructor(
         val baseDelayMinutes = 5L
         val maxDelayMinutes = 60L
         
-        val delayMinutes = (baseDelayMinutes * kotlin.math.pow(3.0, retryCount.toDouble())).toLong()
+        val delayMinutes = (baseDelayMinutes.toDouble() * 3.0.pow(retryCount.toDouble())).toLong()
         
         return kotlin.math.min(delayMinutes, maxDelayMinutes) * 60 * 1000 // Konwersja na milisekundy
     }

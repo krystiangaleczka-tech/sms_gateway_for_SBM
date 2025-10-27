@@ -61,8 +61,7 @@ class SmsManagerWrapper(private val context: Context) {
                 null,                // smsc (null = use default)
                 message,             // text
                 null,                // sentIntent
-                null,                // deliveryIntent
-                null                 // dataIntent (for MMS)
+                null                 // deliveryIntent
             )
             
             logger.info("SMS sent successfully to $phoneNumber")
@@ -131,8 +130,7 @@ class SmsManagerWrapper(private val context: Context) {
                 null,                // smsc (null = use default)
                 parts,               // parts
                 null,                // sentIntents
-                null,                // deliveryIntents
-                null                 // dataIntents (for MMS)
+                null                 // deliveryIntents
             )
             
             logger.info("Multipart SMS sent successfully to $phoneNumber")

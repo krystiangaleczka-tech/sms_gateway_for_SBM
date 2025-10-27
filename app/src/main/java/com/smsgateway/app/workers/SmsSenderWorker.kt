@@ -76,8 +76,7 @@ class SmsSenderWorker @AssistedInject constructor(
                 smsRepository.updateSmsStatusWithSentTime(
                     smsId,
                     SmsStatus.SENT,
-                    System.currentTimeMillis(),
-                    null
+                    System.currentTimeMillis()
                 )
                 
                 logger.info("SMS ID: $smsId sent successfully")
@@ -106,7 +105,7 @@ class SmsSenderWorker @AssistedInject constructor(
                     return Result.retry()
                 } else {
                     // Osiągnięto maksymalną liczbę prób
-                    smsRepository.updateSmsStatusWithErrorAndIncrementRetry(
+                    smsRepository.updateSmsStatusWithError(
                         smsId,
                         SmsStatus.FAILED,
                         System.currentTimeMillis(),

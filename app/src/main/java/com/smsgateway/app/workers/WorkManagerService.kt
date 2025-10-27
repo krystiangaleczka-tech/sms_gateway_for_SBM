@@ -3,6 +3,7 @@ package com.smsgateway.app.workers
 import android.content.Context
 import androidx.work.*
 import com.smsgateway.app.database.SmsMessage
+import org.slf4j.LoggerFactory
 import java.util.concurrent.TimeUnit
 
 /**
@@ -12,6 +13,7 @@ import java.util.concurrent.TimeUnit
 class WorkManagerService(private val context: Context) {
     
     private val workManager = WorkManager.getInstance(context)
+    private val logger = LoggerFactory.getLogger(WorkManagerService::class.java)
     
     companion object {
         // Unikalne nazwy dla zadań WorkManager
@@ -131,13 +133,26 @@ class WorkManagerService(private val context: Context) {
      * Sprawdza status zadania dla konkretnego SMS
      */
     suspend fun getSmsWorkStatus(smsId: Long): WorkInfo? {
-        return workManager.getWorkInfoById("${SENDER_WORK_PREFIX}$smsId").await()
+        return try {
+            val workInfosFuture = workManager.getWorkInfosByTag("${SENDER_WORK_PREFIX}$smsId")
+            val workInfos = workInfosFuture.get()
+            workInfos.firstOrNull()
+        } catch (e: Exception) {
+            logger.error("Error getting work status for SMS ID: $smsId", e)
+            null
+        }
     }
     
     /**
      * Pobiera informacje o wszystkich aktywnych zadaniach SMS
      */
     suspend fun getAllSmsWorkInfo(): List<WorkInfo> {
-        return workManager.getWorkInfosByTag(SMS_WORK_TAG).await()
+        return try {
+            val workInfosFuture = workManager.getWorkInfosByTag(SMS_WORK_TAG)
+            workInfosFuture.get()
+        } catch (e: Exception) {
+            logger.error("Error getting all SMS work info", e)
+            emptyList()
+        }
     }
 }
