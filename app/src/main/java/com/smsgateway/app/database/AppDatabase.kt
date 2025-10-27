@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
  */
 @Database(
     entities = [SmsMessage::class],
-    version = 1,
+    version = 2,
     exportSchema = true
 )
 @TypeConverters(Converters::class)
@@ -60,6 +60,7 @@ abstract class AppDatabase : RoomDatabase() {
         fun clearInstance() {
             INSTANCE = null
         }
+        
     }
     
     /**

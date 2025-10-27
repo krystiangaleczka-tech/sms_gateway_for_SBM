@@ -181,4 +181,21 @@ interface SmsDao {
      */
     @Query("DELETE FROM sms_messages WHERE created_at < :timestamp AND status IN ('SENT', 'CANCELLED')")
     suspend fun cleanupOldMessages(timestamp: Long): Int
+    /**
+     * Pobiera wiadomości zaktualizowane po określonym czasie
+     */
+    @Query("SELECT * FROM sms_messages WHERE updated_at >= :timestamp ORDER BY updated_at DESC")
+    suspend fun getMessagesUpdatedAfter(timestamp: Long): List<SmsMessage>
+    
+    /**
+     * Pobiera całkowitą liczbę wiadomości
+     */
+    @Query("SELECT COUNT(*) FROM sms_messages")
+    suspend fun totalMessages(): Int
+    
+    /**
+     * Pobiera zaplanowane wiadomości SMS
+     */
+    @Query("SELECT * FROM sms_messages WHERE status = 'SCHEDULED' ORDER BY scheduled_at ASC")
+    suspend fun getScheduledSms(): List<SmsMessage>
 }

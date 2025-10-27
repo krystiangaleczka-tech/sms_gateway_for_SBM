@@ -6,9 +6,9 @@ import com.smsgateway.app.routes.smsRoutes
 import com.smsgateway.app.workers.WorkManagerService
 import com.smsgateway.app.plugins.*
 import io.ktor.serialization.kotlinx.json.*
+import kotlinx.serialization.json.Json
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
-import io.ktor.server.netty.*
 import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.plugins.cors.routing.*
 import io.ktor.server.plugins.statuspages.*
@@ -17,17 +17,21 @@ import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.http.*
+import io.ktor.server.netty.Netty
+import io.ktor.server.application.Application
+import io.ktor.server.application.call
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.slf4j.event.Level
 import org.slf4j.LoggerFactory
+import java.util.concurrent.TimeUnit
 
 class KtorServer(private val context: Context, private val smsRepository: SmsRepository) {
     
     private val workManagerService = WorkManagerService(context)
-    
-    private var server: NettyApplicationEngine? = null
+
+    private var server: ApplicationEngine? = null
     
     fun start() {
         // Uruchomienie okresowego schedulera SMS
@@ -35,12 +39,9 @@ class KtorServer(private val context: Context, private val smsRepository: SmsRep
         
         CoroutineScope(Dispatchers.IO).launch {
             server = embeddedServer(Netty, port = 8080, host = "0.0.0.0") {
-                // Pluginy Ktor
-                install(ContentNegotiation) {
-                    json()
-                }
-                
                 // Konfiguracja pluginów
+                configureSerialization()
+                configureMonitoring()
                 configureStatusPages()
                 configureRequestValidation()
                 configureAuthentication()
@@ -109,6 +110,6 @@ class KtorServer(private val context: Context, private val smsRepository: SmsRep
     }
     
     fun stop() {
-        server?.stop(1000, 2000)
+        server?.stop(1000, 2000, TimeUnit.MILLISECONDS)
     }
 }

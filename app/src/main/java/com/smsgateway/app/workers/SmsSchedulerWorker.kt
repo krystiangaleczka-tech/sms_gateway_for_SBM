@@ -113,7 +113,7 @@ class SmsSchedulerWorker @AssistedInject constructor(
             val retryableMessages = smsRepository.getRetryableFailedSms()
             logger.info("Found ${retryableMessages.size} retryable failed messages")
             
-            for (message in retryableMessages) {
+            retryableMessages.forEach { message ->
                 try {
                     // Oblicz opóźnienie ponowienia (eksponencjalne backoff)
                     val retryDelay = calculateRetryDelay(message.retryCount)

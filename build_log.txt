@@ -1,0 +1,1239 @@
+Initialized native services in: /Users/krystiangaleczka/.gradle/native
+Initialized jansi services in: /Users/krystiangaleczka/.gradle/native
+Found daemon DaemonInfo{pid=14278, address=[cdbefeaf-3dc1-40c1-883f-5cc893690f30 port:59311, addresses:[/127.0.0.1]], state=Idle, lastBusy=1761553262985, context=DefaultDaemonContext[uid=f2255600-63d8-4658-96b6-52988b5e8cc0,javaHome=/Applications/Android Studio.app/Contents/jbr/Contents/Home,javaVersion=21,javaVendor=JetBrains s.r.o.,daemonRegistryDir=/Users/krystiangaleczka/.gradle/daemon,pid=14278,idleTimeout=10800000,priority=NORMAL,applyInstrumentationAgent=true,nativeServicesMode=ENABLED,daemonOpts=-Xmx2048m,-Dfile.encoding=UTF-8,-Duser.country=PL,-Duser.language=pl,-Duser.variant]} however its context does not match the desired criteria.
+JVM is incompatible.
+Wanted: DaemonRequestContext{jvmCriteria=/opt/homebrew/Cellar/openjdk@17/17.0.17/libexec/openjdk.jdk/Contents/Home (no JDK specified, using current Java home), daemonOpts=[-Xmx2048m, -Dfile.encoding=UTF-8, -Duser.country=PL, -Duser.language=pl, -Duser.variant], applyInstrumentationAgent=true, nativeServicesMode=ENABLED, priority=NORMAL}
+Actual: DefaultDaemonContext[uid=f2255600-63d8-4658-96b6-52988b5e8cc0,javaHome=/Applications/Android Studio.app/Contents/jbr/Contents/Home,javaVersion=21,javaVendor=JetBrains s.r.o.,daemonRegistryDir=/Users/krystiangaleczka/.gradle/daemon,pid=14278,idleTimeout=10800000,priority=NORMAL,applyInstrumentationAgent=true,nativeServicesMode=ENABLED,daemonOpts=-Xmx2048m,-Dfile.encoding=UTF-8,-Duser.country=PL,-Duser.language=pl,-Duser.variant]
+
+  Looking for a different daemon...
+Found daemon DaemonInfo{pid=16706, address=[d85ef424-c217-4353-b79a-15acff2ec13c port:63115, addresses:[/127.0.0.1]], state=Idle, lastBusy=1761553194709, context=DefaultDaemonContext[uid=5e5f934b-c77e-4e47-b8c1-39fbe69dd3a1,javaHome=/Library/Java/JavaVirtualMachines/jdk-25.jdk/Contents/Home,javaVersion=25,javaVendor=Oracle Corporation,daemonRegistryDir=/Users/krystiangaleczka/.gradle/daemon,pid=16706,idleTimeout=10800000,priority=NORMAL,applyInstrumentationAgent=true,nativeServicesMode=ENABLED,daemonOpts=-Xmx2048m,-Dfile.encoding=UTF-8,-Duser.country=PL,-Duser.language=pl,-Duser.variant]} however its context does not match the desired criteria.
+JVM is incompatible.
+Wanted: DaemonRequestContext{jvmCriteria=/opt/homebrew/Cellar/openjdk@17/17.0.17/libexec/openjdk.jdk/Contents/Home (no JDK specified, using current Java home), daemonOpts=[-Xmx2048m, -Dfile.encoding=UTF-8, -Duser.country=PL, -Duser.language=pl, -Duser.variant], applyInstrumentationAgent=true, nativeServicesMode=ENABLED, priority=NORMAL}
+Actual: DefaultDaemonContext[uid=5e5f934b-c77e-4e47-b8c1-39fbe69dd3a1,javaHome=/Library/Java/JavaVirtualMachines/jdk-25.jdk/Contents/Home,javaVersion=25,javaVendor=Oracle Corporation,daemonRegistryDir=/Users/krystiangaleczka/.gradle/daemon,pid=16706,idleTimeout=10800000,priority=NORMAL,applyInstrumentationAgent=true,nativeServicesMode=ENABLED,daemonOpts=-Xmx2048m,-Dfile.encoding=UTF-8,-Duser.country=PL,-Duser.language=pl,-Duser.variant]
+
+  Looking for a different daemon...
+
+[1A[1B[1AThe client will now receive all logging from the daemon (pid: 2159). The daemon log file: /Users/krystiangaleczka/.gradle/daemon/8.13/daemon-2159.out.log
+Starting 14th build in daemon [uptime: 50 mins 43.398 secs, performance: 97%, GC rate: 0.00/s, heap usage: 0% of 2 GiB]
+Using 8 worker leases.
+
+[1A[1m<[0;1m-------------> 0% INITIALIZING [51ms][m[38D[1B[1ANow considering [/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM] as hierarchies to watch[0K
+Watching the file system is configured to be enabled if available
+[0K
+[1A[1m<[0;1m-------------> 0% INITIALIZING [153ms][m[39D[1B[1AFile system watching is active[0K
+Starting Build
+[0K
+
+[2A[1m<[0;1m-------------> 0% INITIALIZING [253ms][m[39D[1B[1m> Evaluating settings[m[21D[1B[2ASettings evaluated using settings file '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/settings.gradle.kts'.[0K
+Projects loaded. Root project using build file '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/build.gradle.kts'.[0K
+Included projects: [root project 'SMS Gateway', project ':app']
+[0K
+[0K
+[2A[1m<[0;1m-------------> 0% CONFIGURING [352ms][m[38D[1B[1m> root project > Resolve dependencies of classpath[m[50D[1B[2A[0K
+[1m> Configure project :[m[0K
+Evaluating root project 'SMS Gateway' using build file '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/build.gradle.kts'.
+Resolved plugin [id: 'com.android.application', version: '8.13.0', apply: false]
+Resolved plugin [id: 'org.jetbrains.kotlin.android', version: '2.0.21', apply: false]
+Resolved plugin [id: 'org.jetbrains.kotlin.plugin.compose', version: '2.0.21', apply: false]
+Resolved plugin [id: 'com.google.dagger.hilt.android', version: '2.48', apply: false]
+[0K
+[0K
+[2A[1m<[0;32;1m======[0;39;1m-------> 50% CONFIGURING [453ms][m[39D[1B[1m> :app[m[6D[1B[2A[0K
+[1m> Configure project :app[m[0K
+Evaluating project ':app' using build file '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/build.gradle.kts'.
+Resolved plugin [id: 'com.android.application', version: '8.13.0']
+Resolved plugin [id: 'org.jetbrains.kotlin.android', version: '2.0.21']
+Resolved plugin [id: 'org.jetbrains.kotlin.plugin.compose', version: '2.0.21']
+Resolved plugin [id: 'org.jetbrains.kotlin.kapt']
+Resolved plugin [id: 'com.google.dagger.hilt.android', version: '2.48']
+Using default execution profile
+Using Kotlin Gradle Plugin gradle85 variant
+Detected Android Gradle Plugin compose compiler configuration
+Detected Android Gradle Plugin compose compiler configuration
+Detected Android Gradle Plugin compose compiler configuration
+Detected Android Gradle Plugin compose compiler configuration
+Detected Android Gradle Plugin compose compiler configuration
+All projects evaluated.
+Task name matched 'build'
+Selected primary task 'build' from project :
+Adding -Xuse-inline-scopes-numbers Kotlin compiler flag for task :app:compileDebugKotlin
+[0K
+[0K
+[2A[1m<[0;32;1m=============[0;39;1m> 100% CONFIGURING [553ms][m[40D[1B> IDLE[6D[1B[2ATasks to be executed: [task ':app:preBuild', task ':app:preDebugBuild', task ':app:mergeDebugNativeDebugMetadata', task ':app:checkKotlinGradlePluginConfigurationErrors', task ':app:checkDebugAarMetadata', task ':app:processDebugNavigationResources', task ':app:compileDebugNavigationResources', task ':app:generateDebugResValues', task ':app:mapDebugSourceSetPaths', task ':app:generateDebugResources', task ':app:mergeDebugResources', task ':app:packageDebugResources', task ':app:parseDebugLocalResources', task ':app:createDebugCompatibleScreenManifests', task ':app:extractDeepLinksDebug', task ':app:processDebugMainManifest', task ':app:processDebugManifest', task ':app:processDebugManifestForPackage', task ':app:processDebugResources', task ':app:kaptGenerateStubsDebugKotlin', task ':app:kaptDebugKotlin', task ':app:compileDebugKotlin', task ':app:javaPreCompileDebug', task ':app:compileDebugJavaWithJavac', task ':app:mergeDebugShaders', task ':app:compileDebugShaders', task ':app:generateDebugAssets', task ':app:mergeDebugAssets', task ':app:compressDebugAssets', task ':app:hiltAggregateDepsDebug', task ':app:hiltJavaCompileDebug', task ':app:processDebugJavaRes', task ':app:mergeDebugJavaResource', task ':app:checkDebugDuplicateClasses', task ':app:desugarDebugFileDependencies', task ':app:mergeExtDexDebug', task ':app:mergeLibDexDebug', task ':app:transformDebugClassesWithAsm', task ':app:dexBuilderDebug', task ':app:mergeProjectDexDebug', task ':app:mergeDebugJniLibFolders', task ':app:mergeDebugNativeLibs', task ':app:stripDebugDebugSymbols', task ':app:validateSigningDebug', task ':app:writeDebugAppMetadata', task ':app:writeDebugSigningConfigVersions', task ':app:packageDebug', task ':app:createDebugApkListingFileRedirect', task ':app:assembleDebug', task ':app:preReleaseBuild', task ':app:mergeReleaseJniLibFolders', task ':app:mergeReleaseNativeLibs', task ':app:stripReleaseDebugSymbols', task ':app:extractReleaseNativeSymbolTables', task ':app:mergeReleaseNativeDebugMetadata', task ':app:checkReleaseDuplicateClasses', task ':app:buildKotlinToolingMetadata', task ':app:checkReleaseAarMetadata', task ':app:processReleaseNavigationResources', task ':app:compileReleaseNavigationResources', task ':app:generateReleaseResValues', task ':app:mapReleaseSourceSetPaths', task ':app:generateReleaseResources', task ':app:mergeReleaseResources', task ':app:packageReleaseResources', task ':app:parseReleaseLocalResources', task ':app:createReleaseCompatibleScreenManifests', task ':app:extractDeepLinksRelease', task ':app:processReleaseMainManifest', task ':app:processReleaseManifest', task ':app:processReleaseManifestForPackage', task ':app:processReleaseResources', task ':app:kaptGenerateStubsReleaseKotlin', task ':app:kaptReleaseKotlin', task ':app:compileReleaseKotlin', task ':app:javaPreCompileRelease', task ':app:compileReleaseJavaWithJavac', task ':app:hiltAggregateDepsRelease', task ':app:hiltJavaCompileRelease', task ':app:transformReleaseClassesWithAsm', task ':app:dexBuilderRelease', task ':app:desugarReleaseFileDependencies', task ':app:mergeReleaseStartupProfile', task ':app:mergeExtDexRelease', task ':app:mergeDexRelease', task ':app:mergeReleaseArtProfile', task ':app:mergeReleaseGlobalSynthetics', task ':app:compileReleaseArtProfile', task ':app:mergeReleaseShaders', task ':app:compileReleaseShaders', task ':app:generateReleaseAssets', task ':app:mergeReleaseAssets', task ':app:compressReleaseAssets', task ':app:extractReleaseVersionControlInfo', task ':app:extractProguardFiles', task ':app:generateReleaseLintVitalReportModel', task ':app:lintVitalAnalyzeRelease', task ':app:lintVitalReportRelease', task ':app:lintVitalRelease', task ':app:processReleaseJavaRes', task ':app:mergeReleaseJavaResource', task ':app:optimizeReleaseResources', task ':app:collectReleaseDependencies', task ':app:sdkReleaseDependencyData', task ':app:writeReleaseAppMetadata', task ':app:writeReleaseSigningConfigVersions', task ':app:packageRelease', task ':app:createReleaseApkListingFileRedirect', task ':app:assembleRelease', task ':app:assemble', task ':app:bundleDebugClassesToCompileJar', task ':app:preDebugAndroidTestBuild', task ':app:generateDebugAndroidTestResValues', task ':app:generateDebugAndroidTestLintModel', task ':app:generateDebugLintReportModel', task ':app:preDebugUnitTestBuild', task ':app:generateDebugUnitTestLintModel', task ':app:lintAnalyzeDebug', task ':app:lintAnalyzeDebugAndroidTest', task ':app:lintAnalyzeDebugUnitTest', task ':app:lintReportDebug', task ':app:lintDebug', task ':app:lint', task ':app:bundleDebugClassesToRuntimeJar', task ':app:kaptGenerateStubsDebugUnitTestKotlin', task ':app:kaptDebugUnitTestKotlin', task ':app:compileDebugUnitTestKotlin', task ':app:javaPreCompileDebugUnitTest', task ':app:compileDebugUnitTestJavaWithJavac', task ':app:hiltAggregateDepsDebugUnitTest', task ':app:hiltJavaCompileDebugUnitTest', task ':app:processDebugUnitTestJavaRes', task ':app:transformDebugUnitTestClassesWithAsm', task ':app:testDebugUnitTest', task ':app:bundleReleaseClassesToRuntimeJar', task ':app:preReleaseUnitTestBuild', task ':app:bundleReleaseClassesToCompileJar', task ':app:kaptGenerateStubsReleaseUnitTestKotlin', task ':app:kaptReleaseUnitTestKotlin', task ':app:compileReleaseUnitTestKotlin', task ':app:javaPreCompileReleaseUnitTest', task ':app:compileReleaseUnitTestJavaWithJavac', task ':app:hiltAggregateDepsReleaseUnitTest', task ':app:hiltJavaCompileReleaseUnitTest', task ':app:processReleaseUnitTestJavaRes', task ':app:transformReleaseUnitTestClassesWithAsm', task ':app:testReleaseUnitTest', task ':app:test', task ':app:check', task ':app:build'][0K
+Tasks that were excluded: [][0K
+work action Parameters of IdentityTransform (Thread[Execution worker,5,main]) started.
+work action Parameters of CopyTransform (Thread[Execution worker,5,main]) started.
+work action Parameters of AggregatedPackagesTransform (Thread[Execution worker,5,main]) started.
+Resolve mutations for :app:preBuild (Thread[Execution worker,5,main]) started.
+:app:preBuild (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:preBuild[m[33m UP-TO-DATE[39m
+Skipping task ':app:preBuild' as it has no actions.
+Resolve mutations for :app:preDebugBuild (Thread[Execution worker,5,main]) started.
+:app:preDebugBuild (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:preDebugBuild[m[33m UP-TO-DATE[39m
+Skipping task ':app:preDebugBuild' as it has no actions.
+Resolve mutations for :app:mergeDebugNativeDebugMetadata (Thread[Execution worker,5,main]) started.
+:app:mergeDebugNativeDebugMetadata (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:mergeDebugNativeDebugMetadata[m[33m NO-SOURCE[39m
+Skipping task ':app:mergeDebugNativeDebugMetadata' as it has no source files and no previous output files.
+Resolve mutations for :app:checkKotlinGradlePluginConfigurationErrors (Thread[Execution worker,5,main]) started.
+:app:checkKotlinGradlePluginConfigurationErrors (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:checkKotlinGradlePluginConfigurationErrors[m[33m SKIPPED[39m
+Skipping task ':app:checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+Resolve mutations for :app:checkDebugAarMetadata (Thread[Execution worker,5,main]) started.
+:app:checkDebugAarMetadata (Thread[Execution worker,5,main]) started.
+[0K
+[0K
+[2A[1m<[0;1m-------------> 2% EXECUTING [653ms][m[36D[1B[1m> :app:checkDebugAarMetadata > Resolve dependencies of :app:debugRuntimeClasspa[m[79D[1B[2A[0K
+[1m> Task :app:checkDebugAarMetadata[m[33m UP-TO-DATE[39m[0K
+Caching disabled for task ':app:checkDebugAarMetadata' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:checkDebugAarMetadata' as it is up-to-date.
+Resolve mutations for :app:processDebugNavigationResources (Thread[Execution worker,5,main]) started.
+:app:processDebugNavigationResources (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:processDebugNavigationResources[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:processDebugNavigationResources' because:
+  Build cache is disabled
+Skipping task ':app:processDebugNavigationResources' as it is up-to-date.
+Resolve mutations for :app:compileDebugNavigationResources (Thread[Execution worker,5,main]) started.
+:app:compileDebugNavigationResources (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:compileDebugNavigationResources[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:compileDebugNavigationResources' because:
+  Build cache is disabled
+Skipping task ':app:compileDebugNavigationResources' as it is up-to-date.
+Resolve mutations for :app:generateDebugResValues (Thread[Execution worker,5,main]) started.
+:app:generateDebugResValues (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:generateDebugResValues[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:generateDebugResValues' because:
+  Build cache is disabled
+Skipping task ':app:generateDebugResValues' as it is up-to-date.
+Resolve mutations for :app:mapDebugSourceSetPaths (Thread[Execution worker,5,main]) started.
+:app:mapDebugSourceSetPaths (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:mapDebugSourceSetPaths[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:mapDebugSourceSetPaths' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:mapDebugSourceSetPaths' as it is up-to-date.
+Resolve mutations for :app:generateDebugResources (Thread[Execution worker,5,main]) started.
+:app:generateDebugResources (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:generateDebugResources[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:generateDebugResources' because:
+  Build cache is disabled
+Skipping task ':app:generateDebugResources' as it is up-to-date.
+Resolve mutations for :app:mergeDebugResources (Thread[Execution worker,5,main]) started.
+:app:mergeDebugResources (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:mergeDebugResources[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:mergeDebugResources' because:
+  Build cache is disabled
+Skipping task ':app:mergeDebugResources' as it is up-to-date.
+Resolve mutations for :app:packageDebugResources (Thread[Execution worker,5,main]) started.
+:app:packageDebugResources (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:packageDebugResources[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:packageDebugResources' because:
+  Build cache is disabled
+Skipping task ':app:packageDebugResources' as it is up-to-date.
+Resolve mutations for :app:parseDebugLocalResources (Thread[Execution worker,5,main]) started.
+:app:parseDebugLocalResources (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:parseDebugLocalResources[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:parseDebugLocalResources' because:
+  Build cache is disabled
+Skipping task ':app:parseDebugLocalResources' as it is up-to-date.
+Resolve mutations for :app:createDebugCompatibleScreenManifests (Thread[Execution worker,5,main]) started.
+:app:createDebugCompatibleScreenManifests (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:createDebugCompatibleScreenManifests[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:createDebugCompatibleScreenManifests' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:createDebugCompatibleScreenManifests' as it is up-to-date.
+Resolve mutations for :app:extractDeepLinksDebug (Thread[Execution worker,5,main]) started.
+:app:extractDeepLinksDebug (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:extractDeepLinksDebug[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:extractDeepLinksDebug' because:
+  Build cache is disabled
+Skipping task ':app:extractDeepLinksDebug' as it is up-to-date.
+Resolve mutations for :app:processDebugMainManifest (Thread[Execution worker,5,main]) started.
+:app:processDebugMainManifest (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:processDebugMainManifest[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:processDebugMainManifest' because:
+  Build cache is disabled
+Skipping task ':app:processDebugMainManifest' as it is up-to-date.
+Resolve mutations for :app:processDebugManifest (Thread[Execution worker,5,main]) started.
+:app:processDebugManifest (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:processDebugManifest[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:processDebugManifest' because:
+  Build cache is disabled
+Skipping task ':app:processDebugManifest' as it is up-to-date.
+Resolve mutations for :app:processDebugManifestForPackage (Thread[Execution worker,5,main]) started.
+:app:processDebugManifestForPackage (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:processDebugManifestForPackage[m[33m UP-TO-DATE[39m
+Custom actions are attached to task ':app:processDebugManifestForPackage'.
+Caching disabled for task ':app:processDebugManifestForPackage' because:
+  Build cache is disabled
+Skipping task ':app:processDebugManifestForPackage' as it is up-to-date.
+Resolve mutations for :app:processDebugResources (Thread[Execution worker,5,main]) started.
+:app:processDebugResources (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:processDebugResources[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:processDebugResources' because:
+  Build cache is disabled
+Skipping task ':app:processDebugResources' as it is up-to-date.
+Resolve mutations for :app:kaptGenerateStubsDebugKotlin (Thread[Execution worker,5,main]) started.
+:app:kaptGenerateStubsDebugKotlin (Thread[Execution worker,5,main]) started.
+[0K
+[0K
+[2A[1m<[0;32;1m=[0;39;1m------------> 12% EXECUTING [753ms][m[37D[1B[1m> :app:kaptGenerateStubsDebugKotlin > Resolve files of configuration ':app:debu[m[79D[1B[2A[0K
+[1m> Task :app:kaptGenerateStubsDebugKotlin[m[33m UP-TO-DATE[39m[0K
+Adding -Xuse-inline-scopes-numbers Kotlin compiler flag for task :app:compileDebugAndroidTestKotlin
+Caching disabled for task ':app:kaptGenerateStubsDebugKotlin' because:
+  Build cache is disabled
+Skipping task ':app:kaptGenerateStubsDebugKotlin' as it is up-to-date.
+Resolve mutations for :app:kaptDebugKotlin (Thread[Execution worker,5,main]) started.
+:app:kaptDebugKotlin (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:kaptDebugKotlin[m[33m UP-TO-DATE[39m
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/debug/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/debug/java', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/debug/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/debug/java', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/debug/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/debug/java', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/main/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/main/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/main/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/main/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/main/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/main/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/debug/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/debug/java', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/debug/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/debug/java', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/debug/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/debug/java', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/debug/java', not found
+Caching disabled for task ':app:kaptDebugKotlin' because:
+  Build cache is disabled
+Skipping task ':app:kaptDebugKotlin' as it is up-to-date.
+Resolve mutations for :app:compileDebugKotlin (Thread[Execution worker,5,main]) started.
+:app:compileDebugKotlin (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:compileDebugKotlin[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:compileDebugKotlin' because:
+  Build cache is disabled
+Skipping task ':app:compileDebugKotlin' as it is up-to-date.
+Resolve mutations for :app:javaPreCompileDebug (Thread[Execution worker,5,main]) started.
+:app:javaPreCompileDebug (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:javaPreCompileDebug[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:javaPreCompileDebug' because:
+  Build cache is disabled
+Skipping task ':app:javaPreCompileDebug' as it is up-to-date.
+Resolve mutations for :app:compileDebugJavaWithJavac (Thread[Execution worker,5,main]) started.
+:app:compileDebugJavaWithJavac (Thread[Execution worker,5,main]) started.
+[0K
+[0K
+[2A[1m<[0;32;1m=[0;39;1m------------> 14% EXECUTING [851ms][m[37D[1B[1m> :app:compileDebugJavaWithJavac > Resolve dependencies of :app:debugAnnotation[m[79D[1B[2A[0K
+[1m> Task :app:compileDebugJavaWithJavac[m[33m UP-TO-DATE[39m[0K
+Custom actions are attached to task ':app:compileDebugJavaWithJavac'.
+Caching disabled for task ':app:compileDebugJavaWithJavac' because:
+  Build cache is disabled
+Skipping task ':app:compileDebugJavaWithJavac' as it is up-to-date.
+No compile result for :app:compileDebugJavaWithJavac
+Resolve mutations for :app:mergeDebugShaders (Thread[Execution worker,5,main]) started.
+:app:mergeDebugShaders (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:mergeDebugShaders[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:mergeDebugShaders' because:
+  Build cache is disabled
+  Simple merging task
+Skipping task ':app:mergeDebugShaders' as it is up-to-date.
+Resolve mutations for :app:compileDebugShaders (Thread[Execution worker,5,main]) started.
+:app:compileDebugShaders (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:compileDebugShaders[m[33m NO-SOURCE[39m
+Skipping task ':app:compileDebugShaders' as it has no source files and no previous output files.
+Resolve mutations for :app:generateDebugAssets (Thread[Execution worker,5,main]) started.
+:app:generateDebugAssets (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:generateDebugAssets[m[33m UP-TO-DATE[39m
+Skipping task ':app:generateDebugAssets' as it has no actions.
+Resolve mutations for :app:mergeDebugAssets (Thread[Execution worker,5,main]) started.
+:app:mergeDebugAssets (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:mergeDebugAssets[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:mergeDebugAssets' because:
+  Build cache is disabled
+  Simple merging task
+Skipping task ':app:mergeDebugAssets' as it is up-to-date.
+Resolve mutations for :app:compressDebugAssets (Thread[Execution worker,5,main]) started.
+:app:compressDebugAssets (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:compressDebugAssets[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:compressDebugAssets' because:
+  Build cache is disabled
+Skipping task ':app:compressDebugAssets' as it is up-to-date.
+Resolve mutations for :app:hiltAggregateDepsDebug (Thread[Execution worker,5,main]) started.
+:app:hiltAggregateDepsDebug (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:hiltAggregateDepsDebug[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:hiltAggregateDepsDebug' because:
+  Build cache is disabled
+Skipping task ':app:hiltAggregateDepsDebug' as it is up-to-date.
+Resolve mutations for :app:hiltJavaCompileDebug (Thread[Execution worker,5,main]) started.
+:app:hiltJavaCompileDebug (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:hiltJavaCompileDebug[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:hiltJavaCompileDebug' because:
+  Build cache is disabled
+Skipping task ':app:hiltJavaCompileDebug' as it is up-to-date.
+No compile result for :app:hiltJavaCompileDebug
+Resolve mutations for :app:processDebugJavaRes (Thread[Execution worker,5,main]) started.
+:app:processDebugJavaRes (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:processDebugJavaRes[m[33m UP-TO-DATE[39m
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/main/resources', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/debug/resources', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/main/resources', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/debug/resources', not found
+Caching disabled for task ':app:processDebugJavaRes' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:processDebugJavaRes' as it is up-to-date.
+work action resolve out (project :app) (Thread[Execution worker,5,main]) started.
+Resolve mutations for :app:mergeDebugJavaResource (Thread[Execution worker,5,main]) started.
+:app:mergeDebugJavaResource (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:mergeDebugJavaResource[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:mergeDebugJavaResource' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:mergeDebugJavaResource' as it is up-to-date.
+Resolve mutations for :app:checkDebugDuplicateClasses (Thread[Execution worker,5,main]) started.
+:app:checkDebugDuplicateClasses (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:checkDebugDuplicateClasses[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:checkDebugDuplicateClasses' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:checkDebugDuplicateClasses' as it is up-to-date.
+Resolve mutations for :app:desugarDebugFileDependencies (Thread[Execution worker,5,main]) started.
+:app:desugarDebugFileDependencies (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:desugarDebugFileDependencies[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:desugarDebugFileDependencies' because:
+  Build cache is disabled
+Skipping task ':app:desugarDebugFileDependencies' as it is up-to-date.
+Resolve mutations for :app:mergeExtDexDebug (Thread[Execution worker,5,main]) started.
+:app:mergeExtDexDebug (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:mergeExtDexDebug[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:mergeExtDexDebug' because:
+  Build cache is disabled
+Skipping task ':app:mergeExtDexDebug' as it is up-to-date.
+Resolve mutations for :app:mergeLibDexDebug (Thread[Execution worker,5,main]) started.
+:app:mergeLibDexDebug (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:mergeLibDexDebug[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:mergeLibDexDebug' because:
+  Build cache is disabled
+Skipping task ':app:mergeLibDexDebug' as it is up-to-date.
+Resolve mutations for :app:transformDebugClassesWithAsm (Thread[Execution worker,5,main]) started.
+:app:transformDebugClassesWithAsm (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:transformDebugClassesWithAsm[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:transformDebugClassesWithAsm' because:
+  Build cache is disabled
+Skipping task ':app:transformDebugClassesWithAsm' as it is up-to-date.
+Resolve mutations for :app:dexBuilderDebug (Thread[Execution worker,5,main]) started.
+:app:dexBuilderDebug (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:dexBuilderDebug[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:dexBuilderDebug' because:
+  Build cache is disabled
+Skipping task ':app:dexBuilderDebug' as it is up-to-date.
+Resolve mutations for :app:mergeProjectDexDebug (Thread[Execution worker,5,main]) started.
+:app:mergeProjectDexDebug (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:mergeProjectDexDebug[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:mergeProjectDexDebug' because:
+  Build cache is disabled
+Skipping task ':app:mergeProjectDexDebug' as it is up-to-date.
+Resolve mutations for :app:mergeDebugJniLibFolders (Thread[Execution worker,5,main]) started.
+:app:mergeDebugJniLibFolders (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:mergeDebugJniLibFolders[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:mergeDebugJniLibFolders' because:
+  Build cache is disabled
+  Simple merging task
+Skipping task ':app:mergeDebugJniLibFolders' as it is up-to-date.
+Resolve mutations for :app:mergeDebugNativeLibs (Thread[Execution worker,5,main]) started.
+:app:mergeDebugNativeLibs (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:mergeDebugNativeLibs[m[33m NO-SOURCE[39m
+Skipping task ':app:mergeDebugNativeLibs' as it has no source files and no previous output files.
+Resolve mutations for :app:stripDebugDebugSymbols (Thread[Execution worker,5,main]) started.
+:app:stripDebugDebugSymbols (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:stripDebugDebugSymbols[m[33m NO-SOURCE[39m
+Skipping task ':app:stripDebugDebugSymbols' as it has no source files and no previous output files.
+Resolve mutations for :app:validateSigningDebug (Thread[Execution worker,5,main]) started.
+:app:validateSigningDebug (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:validateSigningDebug[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:validateSigningDebug' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:validateSigningDebug' as it is up-to-date.
+Resolve mutations for :app:writeDebugAppMetadata (Thread[Execution worker,5,main]) started.
+:app:writeDebugAppMetadata (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:writeDebugAppMetadata[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:writeDebugAppMetadata' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:writeDebugAppMetadata' as it is up-to-date.
+Resolve mutations for :app:writeDebugSigningConfigVersions (Thread[Execution worker,5,main]) started.
+:app:writeDebugSigningConfigVersions (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:writeDebugSigningConfigVersions[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:writeDebugSigningConfigVersions' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:writeDebugSigningConfigVersions' as it is up-to-date.
+Resolve mutations for :app:packageDebug (Thread[Execution worker,5,main]) started.
+:app:packageDebug (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:packageDebug[m[33m UP-TO-DATE[39m
+Custom actions are attached to task ':app:packageDebug'.
+Caching disabled for task ':app:packageDebug' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:packageDebug' as it is up-to-date.
+Resolve mutations for :app:createDebugApkListingFileRedirect (Thread[Execution worker,5,main]) started.
+:app:createDebugApkListingFileRedirect (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:createDebugApkListingFileRedirect[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:createDebugApkListingFileRedirect' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:createDebugApkListingFileRedirect' as it is up-to-date.
+Resolve mutations for :app:assembleDebug (Thread[Execution worker,5,main]) started.
+:app:assembleDebug (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:assembleDebug[m[33m UP-TO-DATE[39m
+Skipping task ':app:assembleDebug' as it has no actions.
+Resolve mutations for :app:preReleaseBuild (Thread[Execution worker,5,main]) started.
+:app:preReleaseBuild (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:preReleaseBuild[m[33m UP-TO-DATE[39m
+Skipping task ':app:preReleaseBuild' as it has no actions.
+Resolve mutations for :app:mergeReleaseJniLibFolders (Thread[Execution worker,5,main]) started.
+:app:mergeReleaseJniLibFolders (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:mergeReleaseJniLibFolders[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:mergeReleaseJniLibFolders' because:
+  Build cache is disabled
+  Simple merging task
+Skipping task ':app:mergeReleaseJniLibFolders' as it is up-to-date.
+Resolve mutations for :app:mergeReleaseNativeLibs (Thread[Execution worker,5,main]) started.
+:app:mergeReleaseNativeLibs (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:mergeReleaseNativeLibs[m[33m NO-SOURCE[39m
+Skipping task ':app:mergeReleaseNativeLibs' as it has no source files and no previous output files.
+Resolve mutations for :app:stripReleaseDebugSymbols (Thread[Execution worker,5,main]) started.
+:app:stripReleaseDebugSymbols (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:stripReleaseDebugSymbols[m[33m NO-SOURCE[39m
+Skipping task ':app:stripReleaseDebugSymbols' as it has no source files and no previous output files.
+Resolve mutations for :app:extractReleaseNativeSymbolTables (Thread[Execution worker,5,main]) started.
+:app:extractReleaseNativeSymbolTables (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:extractReleaseNativeSymbolTables[m[33m NO-SOURCE[39m
+Skipping task ':app:extractReleaseNativeSymbolTables' as it has no source files and no previous output files.
+Resolve mutations for :app:mergeReleaseNativeDebugMetadata (Thread[Execution worker,5,main]) started.
+:app:mergeReleaseNativeDebugMetadata (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:mergeReleaseNativeDebugMetadata[m[33m NO-SOURCE[39m
+Skipping task ':app:mergeReleaseNativeDebugMetadata' as it has no source files and no previous output files.
+Resolve mutations for :app:checkReleaseDuplicateClasses (Thread[Execution worker,5,main]) started.
+:app:checkReleaseDuplicateClasses (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:checkReleaseDuplicateClasses[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:checkReleaseDuplicateClasses' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:checkReleaseDuplicateClasses' as it is up-to-date.
+Resolve mutations for :app:buildKotlinToolingMetadata (Thread[Execution worker,5,main]) started.
+:app:buildKotlinToolingMetadata (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:buildKotlinToolingMetadata[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:buildKotlinToolingMetadata' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:buildKotlinToolingMetadata' as it is up-to-date.
+Resolve mutations for :app:checkReleaseAarMetadata (Thread[Execution worker,5,main]) started.
+:app:checkReleaseAarMetadata (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:checkReleaseAarMetadata[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:checkReleaseAarMetadata' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:checkReleaseAarMetadata' as it is up-to-date.
+Resolve mutations for :app:processReleaseNavigationResources (Thread[Execution worker,5,main]) started.
+:app:processReleaseNavigationResources (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:processReleaseNavigationResources[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:processReleaseNavigationResources' because:
+  Build cache is disabled
+Skipping task ':app:processReleaseNavigationResources' as it is up-to-date.
+Resolve mutations for :app:compileReleaseNavigationResources (Thread[Execution worker,5,main]) started.
+:app:compileReleaseNavigationResources (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:compileReleaseNavigationResources[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:compileReleaseNavigationResources' because:
+  Build cache is disabled
+Skipping task ':app:compileReleaseNavigationResources' as it is up-to-date.
+Resolve mutations for :app:generateReleaseResValues (Thread[Execution worker,5,main]) started.
+:app:generateReleaseResValues (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:generateReleaseResValues[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:generateReleaseResValues' because:
+  Build cache is disabled
+Skipping task ':app:generateReleaseResValues' as it is up-to-date.
+Resolve mutations for :app:mapReleaseSourceSetPaths (Thread[Execution worker,5,main]) started.
+:app:mapReleaseSourceSetPaths (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:mapReleaseSourceSetPaths[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:mapReleaseSourceSetPaths' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:mapReleaseSourceSetPaths' as it is up-to-date.
+Resolve mutations for :app:generateReleaseResources (Thread[Execution worker,5,main]) started.
+:app:generateReleaseResources (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:generateReleaseResources[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:generateReleaseResources' because:
+  Build cache is disabled
+Skipping task ':app:generateReleaseResources' as it is up-to-date.
+Resolve mutations for :app:mergeReleaseResources (Thread[Execution worker,5,main]) started.
+:app:mergeReleaseResources (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:mergeReleaseResources[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:mergeReleaseResources' because:
+  Build cache is disabled
+Skipping task ':app:mergeReleaseResources' as it is up-to-date.
+Resolve mutations for :app:packageReleaseResources (Thread[Execution worker,5,main]) started.
+:app:packageReleaseResources (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:packageReleaseResources[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:packageReleaseResources' because:
+  Build cache is disabled
+Skipping task ':app:packageReleaseResources' as it is up-to-date.
+Resolve mutations for :app:parseReleaseLocalResources (Thread[Execution worker,5,main]) started.
+:app:parseReleaseLocalResources (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:parseReleaseLocalResources[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:parseReleaseLocalResources' because:
+  Build cache is disabled
+Skipping task ':app:parseReleaseLocalResources' as it is up-to-date.
+Resolve mutations for :app:createReleaseCompatibleScreenManifests (Thread[Execution worker,5,main]) started.
+:app:createReleaseCompatibleScreenManifests (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:createReleaseCompatibleScreenManifests[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:createReleaseCompatibleScreenManifests' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:createReleaseCompatibleScreenManifests' as it is up-to-date.
+Resolve mutations for :app:extractDeepLinksRelease (Thread[Execution worker,5,main]) started.
+:app:extractDeepLinksRelease (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:extractDeepLinksRelease[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:extractDeepLinksRelease' because:
+  Build cache is disabled
+Skipping task ':app:extractDeepLinksRelease' as it is up-to-date.
+Resolve mutations for :app:processReleaseMainManifest (Thread[Execution worker,5,main]) started.
+:app:processReleaseMainManifest (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:processReleaseMainManifest[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:processReleaseMainManifest' because:
+  Build cache is disabled
+Skipping task ':app:processReleaseMainManifest' as it is up-to-date.
+Resolve mutations for :app:processReleaseManifest (Thread[Execution worker,5,main]) started.
+:app:processReleaseManifest (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:processReleaseManifest[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:processReleaseManifest' because:
+  Build cache is disabled
+Skipping task ':app:processReleaseManifest' as it is up-to-date.
+Resolve mutations for :app:processReleaseManifestForPackage (Thread[Execution worker,5,main]) started.
+:app:processReleaseManifestForPackage (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:processReleaseManifestForPackage[m[33m UP-TO-DATE[39m
+Custom actions are attached to task ':app:processReleaseManifestForPackage'.
+Caching disabled for task ':app:processReleaseManifestForPackage' because:
+  Build cache is disabled
+Skipping task ':app:processReleaseManifestForPackage' as it is up-to-date.
+Resolve mutations for :app:processReleaseResources (Thread[Execution worker,5,main]) started.
+:app:processReleaseResources (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:processReleaseResources[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:processReleaseResources' because:
+  Build cache is disabled
+Skipping task ':app:processReleaseResources' as it is up-to-date.
+Resolve mutations for :app:kaptGenerateStubsReleaseKotlin (Thread[Execution worker,5,main]) started.
+:app:kaptGenerateStubsReleaseKotlin (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:kaptGenerateStubsReleaseKotlin[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:kaptGenerateStubsReleaseKotlin' because:
+  Build cache is disabled
+Skipping task ':app:kaptGenerateStubsReleaseKotlin' as it is up-to-date.
+Resolve mutations for :app:kaptReleaseKotlin (Thread[Execution worker,5,main]) started.
+:app:kaptReleaseKotlin (Thread[Execution worker,5,main]) started.
+[0K
+[0K
+[2A[1m<[0;32;1m======[0;39;1m-------> 46% EXECUTING [951ms][m[37D[1B[1m> :app:kaptReleaseKotlin[m[24D[1B[2A[0K
+[1m> Task :app:kaptReleaseKotlin[m[33m UP-TO-DATE[39m[0K
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/release/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/release/java', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/release/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/release/java', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/release/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/release/java', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/main/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/main/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/main/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/main/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/main/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/main/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/release/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/release/java', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/release/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/release/java', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/release/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/release/java', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/release/java', not found
+Caching disabled for task ':app:kaptReleaseKotlin' because:
+  Build cache is disabled
+Skipping task ':app:kaptReleaseKotlin' as it is up-to-date.
+Resolve mutations for :app:compileReleaseKotlin (Thread[Execution worker,5,main]) started.
+:app:compileReleaseKotlin (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:compileReleaseKotlin[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:compileReleaseKotlin' because:
+  Build cache is disabled
+Skipping task ':app:compileReleaseKotlin' as it is up-to-date.
+Resolve mutations for :app:javaPreCompileRelease (Thread[Execution worker,5,main]) started.
+:app:javaPreCompileRelease (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:javaPreCompileRelease[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:javaPreCompileRelease' because:
+  Build cache is disabled
+Skipping task ':app:javaPreCompileRelease' as it is up-to-date.
+Resolve mutations for :app:compileReleaseJavaWithJavac (Thread[Execution worker,5,main]) started.
+:app:compileReleaseJavaWithJavac (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:compileReleaseJavaWithJavac[m[33m UP-TO-DATE[39m
+Custom actions are attached to task ':app:compileReleaseJavaWithJavac'.
+Caching disabled for task ':app:compileReleaseJavaWithJavac' because:
+  Build cache is disabled
+Skipping task ':app:compileReleaseJavaWithJavac' as it is up-to-date.
+No compile result for :app:compileReleaseJavaWithJavac
+Resolve mutations for :app:hiltAggregateDepsRelease (Thread[Execution worker Thread 4,5,main]) started.
+:app:hiltAggregateDepsRelease (Thread[Execution worker Thread 4,5,main]) started.
+
+[1m> Task :app:hiltAggregateDepsRelease[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:hiltAggregateDepsRelease' because:
+  Build cache is disabled
+Skipping task ':app:hiltAggregateDepsRelease' as it is up-to-date.
+Resolve mutations for :app:hiltJavaCompileRelease (Thread[Execution worker Thread 4,5,main]) started.
+:app:hiltJavaCompileRelease (Thread[Execution worker Thread 4,5,main]) started.
+
+[1m> Task :app:hiltJavaCompileRelease[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:hiltJavaCompileRelease' because:
+  Build cache is disabled
+Skipping task ':app:hiltJavaCompileRelease' as it is up-to-date.
+No compile result for :app:hiltJavaCompileRelease
+Resolve mutations for :app:transformReleaseClassesWithAsm (Thread[Execution worker Thread 4,5,main]) started.
+:app:transformReleaseClassesWithAsm (Thread[Execution worker Thread 4,5,main]) started.
+
+[1m> Task :app:transformReleaseClassesWithAsm[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:transformReleaseClassesWithAsm' because:
+  Build cache is disabled
+Skipping task ':app:transformReleaseClassesWithAsm' as it is up-to-date.
+Resolve mutations for :app:dexBuilderRelease (Thread[Execution worker Thread 4,5,main]) started.
+:app:dexBuilderRelease (Thread[Execution worker Thread 4,5,main]) started.
+
+[1m> Task :app:dexBuilderRelease[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:dexBuilderRelease' because:
+  Build cache is disabled
+Skipping task ':app:dexBuilderRelease' as it is up-to-date.
+Resolve mutations for :app:desugarReleaseFileDependencies (Thread[Execution worker Thread 4,5,main]) started.
+:app:desugarReleaseFileDependencies (Thread[Execution worker Thread 4,5,main]) started.
+
+[1m> Task :app:desugarReleaseFileDependencies[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:desugarReleaseFileDependencies' because:
+  Build cache is disabled
+Skipping task ':app:desugarReleaseFileDependencies' as it is up-to-date.
+Resolve mutations for :app:mergeReleaseStartupProfile (Thread[Execution worker Thread 4,5,main]) started.
+:app:mergeReleaseStartupProfile (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:mergeReleaseStartupProfile[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:mergeReleaseStartupProfile' because:
+  Build cache is disabled
+  Simple merging task
+Skipping task ':app:mergeReleaseStartupProfile' as it is up-to-date.
+Resolve mutations for :app:mergeExtDexRelease (Thread[Execution worker,5,main]) started.
+:app:mergeExtDexRelease (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:mergeExtDexRelease[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:mergeExtDexRelease' because:
+  Build cache is disabled
+Skipping task ':app:mergeExtDexRelease' as it is up-to-date.
+Resolve mutations for :app:mergeDexRelease (Thread[Execution worker,5,main]) started.
+:app:mergeDexRelease (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:mergeDexRelease[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:mergeDexRelease' because:
+  Build cache is disabled
+Skipping task ':app:mergeDexRelease' as it is up-to-date.
+Resolve mutations for :app:mergeReleaseArtProfile (Thread[Execution worker,5,main]) started.
+:app:mergeReleaseArtProfile (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:mergeReleaseArtProfile[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:mergeReleaseArtProfile' because:
+  Build cache is disabled
+  Simple merging task
+Skipping task ':app:mergeReleaseArtProfile' as it is up-to-date.
+Resolve mutations for :app:mergeReleaseGlobalSynthetics (Thread[Execution worker,5,main]) started.
+:app:mergeReleaseGlobalSynthetics (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:mergeReleaseGlobalSynthetics[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:mergeReleaseGlobalSynthetics' because:
+  Build cache is disabled
+Skipping task ':app:mergeReleaseGlobalSynthetics' as it is up-to-date.
+Resolve mutations for :app:compileReleaseArtProfile (Thread[Execution worker,5,main]) started.
+:app:compileReleaseArtProfile (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:compileReleaseArtProfile[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:compileReleaseArtProfile' because:
+  Build cache is disabled
+Skipping task ':app:compileReleaseArtProfile' as it is up-to-date.
+Resolve mutations for :app:mergeReleaseShaders (Thread[Execution worker,5,main]) started.
+:app:mergeReleaseShaders (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:mergeReleaseShaders[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:mergeReleaseShaders' because:
+  Build cache is disabled
+  Simple merging task
+Skipping task ':app:mergeReleaseShaders' as it is up-to-date.
+Resolve mutations for :app:compileReleaseShaders (Thread[Execution worker,5,main]) started.
+:app:compileReleaseShaders (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:compileReleaseShaders[m[33m NO-SOURCE[39m
+Skipping task ':app:compileReleaseShaders' as it has no source files and no previous output files.
+Resolve mutations for :app:generateReleaseAssets (Thread[Execution worker,5,main]) started.
+:app:generateReleaseAssets (Thread[Execution worker,5,main]) started.
+
+[1m> Task :app:generateReleaseAssets[m[33m UP-TO-DATE[39m
+Skipping task ':app:generateReleaseAssets' as it has no actions.
+Resolve mutations for :app:mergeReleaseAssets (Thread[Execution worker,5,main]) started.
+:app:mergeReleaseAssets (Thread[Execution worker Thread 5,5,main]) started.
+
+[1m> Task :app:mergeReleaseAssets[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:mergeReleaseAssets' because:
+  Build cache is disabled
+  Simple merging task
+Skipping task ':app:mergeReleaseAssets' as it is up-to-date.
+Resolve mutations for :app:compressReleaseAssets (Thread[Execution worker Thread 5,5,main]) started.
+:app:compressReleaseAssets (Thread[Execution worker Thread 5,5,main]) started.
+
+[1m> Task :app:compressReleaseAssets[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:compressReleaseAssets' because:
+  Build cache is disabled
+Skipping task ':app:compressReleaseAssets' as it is up-to-date.
+Resolve mutations for :app:extractReleaseVersionControlInfo (Thread[Execution worker Thread 5,5,main]) started.
+:app:extractReleaseVersionControlInfo (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:extractReleaseVersionControlInfo[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:extractReleaseVersionControlInfo' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:extractReleaseVersionControlInfo' as it is up-to-date.
+Resolve mutations for :app:extractProguardFiles (Thread[Execution worker Thread 6,5,main]) started.
+:app:extractProguardFiles (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:extractProguardFiles[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:extractProguardFiles' because:
+  Build cache is disabled
+  Fast task
+Skipping task ':app:extractProguardFiles' as it is up-to-date.
+Resolve mutations for :app:generateReleaseLintVitalReportModel (Thread[Execution worker Thread 6,5,main]) started.
+:app:generateReleaseLintVitalReportModel (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:generateReleaseLintVitalReportModel[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:generateReleaseLintVitalReportModel' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:generateReleaseLintVitalReportModel' as it is up-to-date.
+Resolve mutations for :app:lintVitalAnalyzeRelease (Thread[Execution worker Thread 6,5,main]) started.
+:app:lintVitalAnalyzeRelease (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:lintVitalAnalyzeRelease[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:lintVitalAnalyzeRelease' because:
+  Build cache is disabled
+Skipping task ':app:lintVitalAnalyzeRelease' as it is up-to-date.
+Resolve mutations for :app:lintVitalReportRelease (Thread[Execution worker Thread 6,5,main]) started.
+:app:lintVitalReportRelease (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:lintVitalReportRelease[m[33m SKIPPED[39m
+Skipping task ':app:lintVitalReportRelease' as task onlyIf 'Task is enabled' is false.
+Resolve mutations for :app:lintVitalRelease (Thread[Execution worker Thread 6,5,main]) started.
+:app:lintVitalRelease (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:lintVitalRelease[m[33m SKIPPED[39m
+Skipping task ':app:lintVitalRelease' as task onlyIf 'Task is enabled' is false.
+Resolve mutations for :app:processReleaseJavaRes (Thread[Execution worker Thread 6,5,main]) started.
+:app:processReleaseJavaRes (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:processReleaseJavaRes[m[33m UP-TO-DATE[39m
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/main/resources', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/release/resources', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/main/resources', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/release/resources', not found
+Caching disabled for task ':app:processReleaseJavaRes' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:processReleaseJavaRes' as it is up-to-date.
+work action resolve out (project :app) (Thread[Execution worker Thread 6,5,main]) started.
+Resolve mutations for :app:mergeReleaseJavaResource (Thread[Execution worker Thread 6,5,main]) started.
+:app:mergeReleaseJavaResource (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:mergeReleaseJavaResource[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:mergeReleaseJavaResource' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:mergeReleaseJavaResource' as it is up-to-date.
+Resolve mutations for :app:optimizeReleaseResources (Thread[Execution worker Thread 6,5,main]) started.
+:app:optimizeReleaseResources (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:optimizeReleaseResources[m[33m UP-TO-DATE[39m
+Custom actions are attached to task ':app:optimizeReleaseResources'.
+Caching disabled for task ':app:optimizeReleaseResources' because:
+  Build cache is disabled
+Skipping task ':app:optimizeReleaseResources' as it is up-to-date.
+Resolve mutations for :app:collectReleaseDependencies (Thread[Execution worker Thread 6,5,main]) started.
+:app:collectReleaseDependencies (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:collectReleaseDependencies[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:collectReleaseDependencies' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:collectReleaseDependencies' as it is up-to-date.
+Resolve mutations for :app:sdkReleaseDependencyData (Thread[Execution worker Thread 6,5,main]) started.
+:app:sdkReleaseDependencyData (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:sdkReleaseDependencyData[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:sdkReleaseDependencyData' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:sdkReleaseDependencyData' as it is up-to-date.
+Resolve mutations for :app:writeReleaseAppMetadata (Thread[Execution worker Thread 6,5,main]) started.
+:app:writeReleaseAppMetadata (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:writeReleaseAppMetadata[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:writeReleaseAppMetadata' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:writeReleaseAppMetadata' as it is up-to-date.
+Resolve mutations for :app:writeReleaseSigningConfigVersions (Thread[Execution worker Thread 6,5,main]) started.
+:app:writeReleaseSigningConfigVersions (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:writeReleaseSigningConfigVersions[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:writeReleaseSigningConfigVersions' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:writeReleaseSigningConfigVersions' as it is up-to-date.
+Resolve mutations for :app:packageRelease (Thread[Execution worker Thread 6,5,main]) started.
+:app:packageRelease (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:packageRelease[m[33m UP-TO-DATE[39m
+Custom actions are attached to task ':app:packageRelease'.
+Caching disabled for task ':app:packageRelease' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:packageRelease' as it is up-to-date.
+Resolve mutations for :app:createReleaseApkListingFileRedirect (Thread[Execution worker Thread 6,5,main]) started.
+:app:createReleaseApkListingFileRedirect (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:createReleaseApkListingFileRedirect[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:createReleaseApkListingFileRedirect' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:createReleaseApkListingFileRedirect' as it is up-to-date.
+Resolve mutations for :app:assembleRelease (Thread[Execution worker Thread 6,5,main]) started.
+:app:assembleRelease (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:assembleRelease[m[33m UP-TO-DATE[39m
+Skipping task ':app:assembleRelease' as it has no actions.
+Resolve mutations for :app:assemble (Thread[Execution worker Thread 6,5,main]) started.
+:app:assemble (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:assemble[m[33m UP-TO-DATE[39m
+Skipping task ':app:assemble' as it has no actions.
+Resolve mutations for :app:bundleDebugClassesToCompileJar (Thread[Execution worker Thread 6,5,main]) started.
+:app:bundleDebugClassesToCompileJar (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:bundleDebugClassesToCompileJar[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:bundleDebugClassesToCompileJar' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:bundleDebugClassesToCompileJar' as it is up-to-date.
+work action resolve classes.jar (project :app) (Thread[Execution worker Thread 6,5,main]) started.
+work action resolve classes.jar (project :app) (Thread[Execution worker Thread 6,5,main]) started.
+Resolve mutations for :app:preDebugAndroidTestBuild (Thread[Execution worker Thread 6,5,main]) started.
+:app:preDebugAndroidTestBuild (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:preDebugAndroidTestBuild[m[33m SKIPPED[39m
+Skipping task ':app:preDebugAndroidTestBuild' as task onlyIf 'Task is enabled' is false.
+Resolve mutations for :app:generateDebugAndroidTestResValues (Thread[Execution worker Thread 6,5,main]) started.
+:app:generateDebugAndroidTestResValues (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:generateDebugAndroidTestResValues[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:generateDebugAndroidTestResValues' because:
+  Build cache is disabled
+Skipping task ':app:generateDebugAndroidTestResValues' as it is up-to-date.
+Resolve mutations for :app:generateDebugAndroidTestLintModel (Thread[Execution worker Thread 6,5,main]) started.
+:app:generateDebugAndroidTestLintModel (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:generateDebugAndroidTestLintModel[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:generateDebugAndroidTestLintModel' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:generateDebugAndroidTestLintModel' as it is up-to-date.
+Resolve mutations for :app:generateDebugLintReportModel (Thread[Execution worker Thread 6,5,main]) started.
+:app:generateDebugLintReportModel (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:generateDebugLintReportModel[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:generateDebugLintReportModel' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:generateDebugLintReportModel' as it is up-to-date.
+Resolve mutations for :app:preDebugUnitTestBuild (Thread[Execution worker Thread 6,5,main]) started.
+:app:preDebugUnitTestBuild (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:preDebugUnitTestBuild[m[33m UP-TO-DATE[39m
+Skipping task ':app:preDebugUnitTestBuild' as it has no actions.
+Resolve mutations for :app:generateDebugUnitTestLintModel (Thread[Execution worker Thread 6,5,main]) started.
+:app:generateDebugUnitTestLintModel (Thread[Execution worker Thread 6,5,main]) started.
+[0K
+[0K
+[2A[1m<[0;32;1m=========[0;39;1m----> 74% EXECUTING [1s][m[34D[1B[1m> :app:generateDebugUnitTestLintModel > Resolve dependencies of :app:debugUnitT[m[79D[1B[2A[0K
+[1m> Task :app:generateDebugUnitTestLintModel[m[33m UP-TO-DATE[39m[0K
+Caching disabled for task ':app:generateDebugUnitTestLintModel' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:generateDebugUnitTestLintModel' as it is up-to-date.
+Resolve mutations for :app:lintAnalyzeDebug (Thread[Execution worker Thread 6,5,main]) started.
+:app:lintAnalyzeDebug (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:lintAnalyzeDebug[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:lintAnalyzeDebug' because:
+  Build cache is disabled
+Skipping task ':app:lintAnalyzeDebug' as it is up-to-date.
+Resolve mutations for :app:lintAnalyzeDebugAndroidTest (Thread[Execution worker Thread 6,5,main]) started.
+:app:lintAnalyzeDebugAndroidTest (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:lintAnalyzeDebugAndroidTest[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:lintAnalyzeDebugAndroidTest' because:
+  Build cache is disabled
+Skipping task ':app:lintAnalyzeDebugAndroidTest' as it is up-to-date.
+Resolve mutations for :app:lintAnalyzeDebugUnitTest (Thread[Execution worker Thread 6,5,main]) started.
+:app:lintAnalyzeDebugUnitTest (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:lintAnalyzeDebugUnitTest[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:lintAnalyzeDebugUnitTest' because:
+  Build cache is disabled
+Skipping task ':app:lintAnalyzeDebugUnitTest' as it is up-to-date.
+Resolve mutations for :app:lintReportDebug (Thread[Execution worker Thread 6,5,main]) started.
+:app:lintReportDebug (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:lintReportDebug[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:lintReportDebug' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:lintReportDebug' as it is up-to-date.
+Resolve mutations for :app:lintDebug (Thread[Execution worker Thread 6,5,main]) started.
+:app:lintDebug (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:lintDebug[m
+Caching disabled for task ':app:lintDebug' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Task ':app:lintDebug' is not up-to-date because:
+  Task.upToDateWhen is false.
+Resolve mutations for :app:lint (Thread[Execution worker Thread 6,5,main]) started.
+:app:lint (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:lint[m
+Skipping task ':app:lint' as it has no actions.
+Resolve mutations for :app:bundleDebugClassesToRuntimeJar (Thread[Execution worker Thread 6,5,main]) started.
+:app:bundleDebugClassesToRuntimeJar (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:bundleDebugClassesToRuntimeJar[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:bundleDebugClassesToRuntimeJar' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:bundleDebugClassesToRuntimeJar' as it is up-to-date.
+work action resolve classes.jar (project :app) (Thread[Execution worker Thread 6,5,main]) started.
+Resolve mutations for :app:kaptGenerateStubsDebugUnitTestKotlin (Thread[Execution worker Thread 6,5,main]) started.
+IdentityTransform (Thread[Execution worker Thread 5,5,main]) started.
+CopyTransform (Thread[Execution worker Thread 5,5,main]) started.
+AggregatedPackagesTransform (Thread[Execution worker Thread 5,5,main]) started.
+:app:kaptGenerateStubsDebugUnitTestKotlin (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:kaptGenerateStubsDebugUnitTestKotlin[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:kaptGenerateStubsDebugUnitTestKotlin' because:
+  Build cache is disabled
+Skipping task ':app:kaptGenerateStubsDebugUnitTestKotlin' as it is up-to-date.
+Resolve mutations for :app:kaptDebugUnitTestKotlin (Thread[Execution worker Thread 6,5,main]) started.
+:app:kaptDebugUnitTestKotlin (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:kaptDebugUnitTestKotlin[m[33m UP-TO-DATE[39m
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/debugUnitTest/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/test/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/test/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/test/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/testDebug/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/testDebug/java', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/testDebug/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/testDebug/java', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/testDebug/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/testDebug/java', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/test/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/test/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/test/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/testDebug/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/testDebug/java', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/testDebug/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/testDebug/java', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/testDebug/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/testDebug/java', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/testDebug/java', not found
+Caching disabled for task ':app:kaptDebugUnitTestKotlin' because:
+  Build cache is disabled
+Skipping task ':app:kaptDebugUnitTestKotlin' as it is up-to-date.
+Resolve mutations for :app:compileDebugUnitTestKotlin (Thread[Execution worker Thread 6,5,main]) started.
+:app:compileDebugUnitTestKotlin (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:compileDebugUnitTestKotlin[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:compileDebugUnitTestKotlin' because:
+  Build cache is disabled
+Skipping task ':app:compileDebugUnitTestKotlin' as it is up-to-date.
+Resolve mutations for :app:javaPreCompileDebugUnitTest (Thread[Execution worker Thread 6,5,main]) started.
+:app:javaPreCompileDebugUnitTest (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:javaPreCompileDebugUnitTest[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:javaPreCompileDebugUnitTest' because:
+  Build cache is disabled
+Skipping task ':app:javaPreCompileDebugUnitTest' as it is up-to-date.
+Resolve mutations for :app:compileDebugUnitTestJavaWithJavac (Thread[Execution worker Thread 6,5,main]) started.
+:app:compileDebugUnitTestJavaWithJavac (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:compileDebugUnitTestJavaWithJavac[m[33m NO-SOURCE[39m
+Skipping task ':app:compileDebugUnitTestJavaWithJavac' as it has no source files and no previous output files.
+Resolve mutations for :app:hiltAggregateDepsDebugUnitTest (Thread[Execution worker Thread 6,5,main]) started.
+:app:hiltAggregateDepsDebugUnitTest (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:hiltAggregateDepsDebugUnitTest[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:hiltAggregateDepsDebugUnitTest' because:
+  Build cache is disabled
+Skipping task ':app:hiltAggregateDepsDebugUnitTest' as it is up-to-date.
+Resolve mutations for :app:hiltJavaCompileDebugUnitTest (Thread[Execution worker Thread 6,5,main]) started.
+:app:hiltJavaCompileDebugUnitTest (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:hiltJavaCompileDebugUnitTest[m[33m NO-SOURCE[39m
+Skipping task ':app:hiltJavaCompileDebugUnitTest' as it has no source files and no previous output files.
+Resolve mutations for :app:processDebugUnitTestJavaRes (Thread[Execution worker Thread 6,5,main]) started.
+:app:processDebugUnitTestJavaRes (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:processDebugUnitTestJavaRes[m[33m UP-TO-DATE[39m
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/test/resources', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/testDebug/resources', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/test/resources', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/testDebug/resources', not found
+Caching disabled for task ':app:processDebugUnitTestJavaRes' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:processDebugUnitTestJavaRes' as it is up-to-date.
+Resolve mutations for :app:transformDebugUnitTestClassesWithAsm (Thread[Execution worker Thread 6,5,main]) started.
+:app:transformDebugUnitTestClassesWithAsm (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:transformDebugUnitTestClassesWithAsm[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:transformDebugUnitTestClassesWithAsm' because:
+  Build cache is disabled
+Skipping task ':app:transformDebugUnitTestClassesWithAsm' as it is up-to-date.
+Resolve mutations for :app:testDebugUnitTest (Thread[Execution worker Thread 6,5,main]) started.
+:app:testDebugUnitTest (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:testDebugUnitTest[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:testDebugUnitTest' because:
+  Build cache is disabled
+Skipping task ':app:testDebugUnitTest' as it is up-to-date.
+Resolve mutations for :app:bundleReleaseClassesToRuntimeJar (Thread[Execution worker Thread 6,5,main]) started.
+:app:bundleReleaseClassesToRuntimeJar (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:bundleReleaseClassesToRuntimeJar[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:bundleReleaseClassesToRuntimeJar' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:bundleReleaseClassesToRuntimeJar' as it is up-to-date.
+work action resolve classes.jar (project :app) (Thread[Execution worker Thread 6,5,main]) started.
+Resolve mutations for :app:preReleaseUnitTestBuild (Thread[Execution worker Thread 6,5,main]) started.
+IdentityTransform (Thread[included builds,5,main]) started.
+:app:preReleaseUnitTestBuild (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:preReleaseUnitTestBuild[m[33m UP-TO-DATE[39m
+Skipping task ':app:preReleaseUnitTestBuild' as it has no actions.
+Resolve mutations for :app:bundleReleaseClassesToCompileJar (Thread[Execution worker Thread 6,5,main]) started.
+:app:bundleReleaseClassesToCompileJar (Thread[Execution worker Thread 6,5,main]) started.
+CopyTransform (Thread[Execution worker Thread 7,5,main]) started.
+AggregatedPackagesTransform (Thread[Execution worker Thread 7,5,main]) started.
+
+[1m> Task :app:bundleReleaseClassesToCompileJar[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:bundleReleaseClassesToCompileJar' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:bundleReleaseClassesToCompileJar' as it is up-to-date.
+work action resolve classes.jar (project :app) (Thread[Execution worker Thread 6,5,main]) started.
+Resolve mutations for :app:kaptGenerateStubsReleaseUnitTestKotlin (Thread[Execution worker Thread 6,5,main]) started.
+:app:kaptGenerateStubsReleaseUnitTestKotlin (Thread[Execution worker Thread 6,5,main]) started.
+[0K
+[0K
+[2A[1m<[0;32;1m===========[0;39;1m--> 91% EXECUTING [1s][m[34D[1B[1m> :app:kaptGenerateStubsReleaseUnitTestKotlin[m[45D[1B[2A[0K
+[1m> Task :app:kaptGenerateStubsReleaseUnitTestKotlin[m[33m UP-TO-DATE[39m[0K
+Caching disabled for task ':app:kaptGenerateStubsReleaseUnitTestKotlin' because:
+  Build cache is disabled
+Skipping task ':app:kaptGenerateStubsReleaseUnitTestKotlin' as it is up-to-date.
+Resolve mutations for :app:kaptReleaseUnitTestKotlin (Thread[Execution worker Thread 6,5,main]) started.
+:app:kaptReleaseUnitTestKotlin (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:kaptReleaseUnitTestKotlin[m[33m UP-TO-DATE[39m
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/releaseUnitTest/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/test/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/test/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/test/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/testRelease/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/testRelease/java', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/testRelease/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/testRelease/java', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/testRelease/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/testRelease/java', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/test/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/test/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/test/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/testRelease/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/testRelease/java', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/testRelease/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/testRelease/java', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/testRelease/kotlin', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/testRelease/java', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/testRelease/java', not found
+Caching disabled for task ':app:kaptReleaseUnitTestKotlin' because:
+  Build cache is disabled
+Skipping task ':app:kaptReleaseUnitTestKotlin' as it is up-to-date.
+Resolve mutations for :app:compileReleaseUnitTestKotlin (Thread[Execution worker Thread 6,5,main]) started.
+:app:compileReleaseUnitTestKotlin (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:compileReleaseUnitTestKotlin[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:compileReleaseUnitTestKotlin' because:
+  Build cache is disabled
+Skipping task ':app:compileReleaseUnitTestKotlin' as it is up-to-date.
+Resolve mutations for :app:javaPreCompileReleaseUnitTest (Thread[Execution worker Thread 6,5,main]) started.
+:app:javaPreCompileReleaseUnitTest (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:javaPreCompileReleaseUnitTest[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:javaPreCompileReleaseUnitTest' because:
+  Build cache is disabled
+Skipping task ':app:javaPreCompileReleaseUnitTest' as it is up-to-date.
+Resolve mutations for :app:compileReleaseUnitTestJavaWithJavac (Thread[Execution worker Thread 6,5,main]) started.
+:app:compileReleaseUnitTestJavaWithJavac (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:compileReleaseUnitTestJavaWithJavac[m[33m NO-SOURCE[39m
+Skipping task ':app:compileReleaseUnitTestJavaWithJavac' as it has no source files and no previous output files.
+Resolve mutations for :app:hiltAggregateDepsReleaseUnitTest (Thread[Execution worker Thread 6,5,main]) started.
+:app:hiltAggregateDepsReleaseUnitTest (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:hiltAggregateDepsReleaseUnitTest[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:hiltAggregateDepsReleaseUnitTest' because:
+  Build cache is disabled
+Skipping task ':app:hiltAggregateDepsReleaseUnitTest' as it is up-to-date.
+Resolve mutations for :app:hiltJavaCompileReleaseUnitTest (Thread[Execution worker Thread 6,5,main]) started.
+:app:hiltJavaCompileReleaseUnitTest (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:hiltJavaCompileReleaseUnitTest[m[33m NO-SOURCE[39m
+Skipping task ':app:hiltJavaCompileReleaseUnitTest' as it has no source files and no previous output files.
+Resolve mutations for :app:processReleaseUnitTestJavaRes (Thread[Execution worker Thread 6,5,main]) started.
+:app:processReleaseUnitTestJavaRes (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:processReleaseUnitTestJavaRes[m[33m UP-TO-DATE[39m
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/test/resources', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/testRelease/resources', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/test/resources', not found
+file or directory '/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM/app/src/testRelease/resources', not found
+Caching disabled for task ':app:processReleaseUnitTestJavaRes' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:processReleaseUnitTestJavaRes' as it is up-to-date.
+Resolve mutations for :app:transformReleaseUnitTestClassesWithAsm (Thread[Execution worker Thread 6,5,main]) started.
+:app:transformReleaseUnitTestClassesWithAsm (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:transformReleaseUnitTestClassesWithAsm[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:transformReleaseUnitTestClassesWithAsm' because:
+  Build cache is disabled
+Skipping task ':app:transformReleaseUnitTestClassesWithAsm' as it is up-to-date.
+Resolve mutations for :app:testReleaseUnitTest (Thread[Execution worker Thread 6,5,main]) started.
+:app:testReleaseUnitTest (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:testReleaseUnitTest[m[33m UP-TO-DATE[39m
+Caching disabled for task ':app:testReleaseUnitTest' because:
+  Build cache is disabled
+Skipping task ':app:testReleaseUnitTest' as it is up-to-date.
+Resolve mutations for :app:test (Thread[Execution worker Thread 6,5,main]) started.
+:app:test (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:test[m[33m UP-TO-DATE[39m
+Skipping task ':app:test' as it has no actions.
+Resolve mutations for :app:check (Thread[Execution worker Thread 6,5,main]) started.
+:app:check (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:check[m
+Skipping task ':app:check' as it has no actions.
+Resolve mutations for :app:build (Thread[Execution worker Thread 6,5,main]) started.
+:app:build (Thread[Execution worker Thread 6,5,main]) started.
+
+[1m> Task :app:build[m
+Skipping task ':app:build' as it has no actions.
+
+[32;1mBUILD SUCCESSFUL[0;39m in 1s
+119 actionable tasks: 1 executed, 118 up-to-date
+Watched directory hierarchies: [/Users/krystiangaleczka/smsapi_apk/sms_gateway_for_SBM]
+[0K
+[0K
+[2A[1m<[0;1m-------------> 0% WAITING[m[26D[1B[1m> :app:kaptGenerateStubsReleaseUnitTestKotlin[m[45D[1B[2A[2K[1B[2K[1A

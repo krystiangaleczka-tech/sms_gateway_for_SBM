@@ -49,7 +49,10 @@ data class SmsMessage(
     val retryCount: Int = 0,
     
     @ColumnInfo(name = "max_retries")
-    val maxRetries: Int = 3
+    val maxRetries: Int = 3,
+    
+    @ColumnInfo(name = "updated_at")
+    val updatedAt: Long? = null
 )
 
 /**
